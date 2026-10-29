@@ -20,15 +20,19 @@ class Player{
         const image = new Image()
         image.src = 'assets/images/spaceship.png'
 
-
-        this.image = image
-        this.width = 100
-        this.height = 100
+        image.onload = () => {
+            this.image = image
+            this.width = image.width
+            this.height = image.height
+    
+        }
     }
     draw() {
-        //c.fillStyle = 'red'
-        //c.fillRect(this.position.x, this.position.y, this.width, this.height)
-        c.drawImage(this.image, this.position.x, this.position.y)
+        if(this.image) {
+            //c.fillStyle = 'red'
+            //c.fillRect(this.position.x, this.position.y, this.width, this.height)
+            c.drawImage(this.image, this.position.x, this.position.y, this.width, this.height)
+        }
     }
 }
 
@@ -42,6 +46,6 @@ function animate(){
     player.draw()
 }
 
-player.image.onload = () => {
+if (player.image && player.image.onload) {player.image.onload();} {
     animate()
 }
