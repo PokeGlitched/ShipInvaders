@@ -59,5 +59,23 @@ addEventListener('keydown', ({key}) => {
         case 'left':
             console.log('left')
             break
+        case 'd':
+        case 'D':
+        case 'ArrowRight':
+        case 'right':
+            console.log('right')
+            break
+        case 's':
+        case 'S':
+        case 'ArrowDown':
+        case 'down':
+            console.log('down')
+            break
+        case 'w':
+        case 'W':
+        case 'ArrowUp':
+        case 'up':
+            console.log('up')
+            break
     }
 })
