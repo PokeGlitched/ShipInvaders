@@ -7,10 +7,7 @@ canvas.height = innerHeight
 
 class Player{
     constructor(){
-        this.position = {
-            x: 200,
-            y: 200
-        }
+        
 
         this.velocity = {
             x: 0,
@@ -25,7 +22,10 @@ class Player{
             this.image = image
             this.width = image.width * resizescale
             this.height = image.height * resizescale
-    
+            this.position = {
+                    x: (canvas.width - this.width)/2,
+                    y: canvas.height - this.height - 20
+            }
         }
     }
     draw() {
