@@ -14,6 +14,8 @@ class Player{
             y: 0
         }
 
+        this.rotation = 0
+
         const image = new Image()
         image.src = 'assets/images/spaceship.png'
 
@@ -30,10 +32,18 @@ class Player{
     }
     draw() {
             //c.fillStyle = 'red'
-            //c.fillRect(this.position.x, this.position.y, this.width, this.height)
+         //c.fillRect(this.position.x, this.position.y, this.width, this.height)
+        if (!this.image || !this.position) return;
+            c.save()
+            c.translate(this.position.x + this.width/2, this.position.y + player.height/2)
+            c.rotate(this.rotation)
+            c.translate(-this.position.x -this.width/2, - this.position.y - player.height/2)
+
             if (this.image && this.position) {
                 c.drawImage(this.image, this.position.x, this.position.y, this.width, this.height)
             }    
+
+            c.restore()
     }
     update() {
         this.draw()
@@ -64,8 +74,9 @@ function animate(){
     c.fillRect(0, 0, canvas.width, canvas.height)
     player.update()
 
-    const speed = 7
+    const speed = 7;
     const rotationamt = 0.15
+    player.rotation = 0
     if (keys.a.pressed && player.position.x >= 0) {
         player.velocity.x = -speed
         player.rotation = -rotationamt
