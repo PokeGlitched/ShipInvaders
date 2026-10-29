@@ -50,3 +50,7 @@ function animate(){
 if (player.image && player.image.onload) {player.image.onload();} {
     animate()
 }
+
+addEventListener('keydown', () => {
+    console.log('keydown')
+})
