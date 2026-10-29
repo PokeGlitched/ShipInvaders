@@ -76,7 +76,6 @@ function animate(){
 
     const speed = 7;
     const rotationamt = 0.15
-    player.rotation = 0
     if (keys.a.pressed && player.position.x >= 0) {
         player.velocity.x = -speed
         player.rotation = -rotationamt
@@ -87,6 +86,7 @@ function animate(){
     }
     else {
         player.velocity.x = 0
+        player.rotation = 0
     }
 }
 
