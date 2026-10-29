@@ -31,7 +31,9 @@ class Player{
     draw() {
             //c.fillStyle = 'red'
             //c.fillRect(this.position.x, this.position.y, this.width, this.height)
-            c.drawImage(this.image, this.position.x, this.position.y, this.width, this.height)
+            if (this.image && this.position) {
+                c.drawImage(this.image, this.position.x, this.position.y, this.width, this.height)
+            }    
     }
     update() {
         this.draw()
