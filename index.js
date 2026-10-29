@@ -64,16 +64,16 @@ function animate(){
     c.fillRect(0, 0, canvas.width, canvas.height)
     player.update()
 
+    const speed = 7
     if (keys.a.pressed && player.position.x >= 0) {
-        player.velocity.x = -5
+        player.velocity.x = -speed
     }
     else if (keys.d.pressed && player.position.x + player.width <= canvas.width) {
-        player.velocity.x = 5
+        player.velocity.x = speed
     }
     else {
         player.velocity.x = 0
     }
-
 }
 
 if (player.image && player.image.onload) {player.image.onload();} {
