@@ -77,5 +77,9 @@ addEventListener('keydown', ({key}) => {
         case 'up':
             console.log('up')
             break
+        case ' ':
+        case 'Space':
+            console.log('shoot')
+            break
     }
 })
