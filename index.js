@@ -44,6 +44,18 @@ class Player{
 }
 
 const player = new Player()
+const keys = {
+    a: {
+        pressed: false
+    },
+    d: {
+        pressed: false
+    },
+    space: {
+        pressed: false
+    }
+}
+
 player.draw()
 
 function animate(){
@@ -51,6 +63,14 @@ function animate(){
     c.fillStyle = 'black'
     c.fillRect(0, 0, canvas.width, canvas.height)
     player.update()
+
+    if (keys.a.pressed) {
+        player.velocity.x = -5
+    }
+    else {
+        player.velocity.x = 0
+    }
+    
 }
 
 if (player.image && player.image.onload) {player.image.onload();} {
@@ -64,13 +84,37 @@ addEventListener('keydown', ({key}) => {
         case 'ArrowLeft':
         case 'left':
             console.log('left')
-            player.velocity.x = -5
+            keys.a.pressed = true
             break
         case 'd':
         case 'D':
         case 'ArrowRight':
         case 'right':
             console.log('right')
+            keys.d.pressed = true
+            break
+        case ' ':
+        case 'Space':
+            console.log('shoot')
+            break
+    }
+})
+
+addEventListener('keyup', ({key}) => {
+    switch (key) {
+        case 'a':
+        case 'A':
+        case 'ArrowLeft':
+        case 'left':
+            console.log('left')
+            keys.a.pressed = false
+            break
+        case 'd':
+        case 'D':
+        case 'ArrowRight':
+        case 'right':
+            console.log('right')
+            keys.d.pressed = false
             break
         case ' ':
         case 'Space':
