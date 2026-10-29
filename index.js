@@ -21,9 +21,10 @@ class Player{
         image.src = 'assets/images/spaceship.png'
 
         image.onload = () => {
+            const resizescale = 0.15
             this.image = image
-            this.width = image.width
-            this.height = image.height
+            this.width = image.width * resizescale
+            this.height = image.height * resizescale
     
         }
     }
