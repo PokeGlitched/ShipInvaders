@@ -29,11 +29,13 @@ class Player{
         }
     }
     draw() {
-        if(this.image) {
             //c.fillStyle = 'red'
             //c.fillRect(this.position.x, this.position.y, this.width, this.height)
             c.drawImage(this.image, this.position.x, this.position.y, this.width, this.height)
-        }
+    }
+    update() {
+        this.draw()
+        this.position.x += this.velocity.x
     }
 }
 
@@ -44,7 +46,7 @@ function animate(){
     requestAnimationFrame(animate)
     c.fillStyle = 'black'
     c.fillRect(0, 0, canvas.width, canvas.height)
-    player.draw()
+    player.update()
 }
 
 if (player.image && player.image.onload) {player.image.onload();} {
@@ -58,6 +60,7 @@ addEventListener('keydown', ({key}) => {
         case 'ArrowLeft':
         case 'left':
             console.log('left')
+            player.velocity.x = -5
             break
         case 'd':
         case 'D':
