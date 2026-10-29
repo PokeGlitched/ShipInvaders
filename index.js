@@ -51,6 +51,10 @@ if (player.image && player.image.onload) {player.image.onload();} {
     animate()
 }
 
-addEventListener('keydown', () => {
-    console.log('keydown')
+addEventListener('keydown', ({key}) => {
+    switch (key) {
+        case 'a' || 'ArrowLeft':
+            console.log('left')
+            break
+    }
 })
