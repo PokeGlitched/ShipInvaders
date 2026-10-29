@@ -65,11 +65,14 @@ function animate(){
     player.update()
 
     const speed = 7
+    const rotationamt = 0.15
     if (keys.a.pressed && player.position.x >= 0) {
         player.velocity.x = -speed
+        player.rotation = -rotationamt
     }
     else if (keys.d.pressed && player.position.x + player.width <= canvas.width) {
         player.velocity.x = speed
+        player.rotation = rotationamt
     }
     else {
         player.velocity.x = 0
