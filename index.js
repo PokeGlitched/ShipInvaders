@@ -67,10 +67,13 @@ function animate(){
     if (keys.a.pressed) {
         player.velocity.x = -5
     }
+    else if (keys.d.pressed) {
+        player.velocity.x = 5
+    }
     else {
         player.velocity.x = 0
     }
-    
+
 }
 
 if (player.image && player.image.onload) {player.image.onload();} {
