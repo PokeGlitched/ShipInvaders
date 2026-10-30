@@ -100,7 +100,7 @@ function animate(){
     projectiles.forEach((projectile, index)=> {
         
         if (projectile.position.y + projectile.radius <= 0) {
-            projectile.splice(index, 1)
+            projectiles.splice(index, 1)
         } else {
         projectile.update()
         }
@@ -155,7 +155,7 @@ addEventListener('keydown', ({key}) => {
                     y: -10
                 }
             }))
-            console.log('projectile')
+            console.log([projectiles])
             break
     }
 })
