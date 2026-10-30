@@ -53,6 +53,17 @@ class Player{
     }
 }
 
+
+class Projectile{
+    constructor({position, velocity}){
+        this.position = position
+        this.velocity = velocity 
+
+        this.radius = 3
+    }
+
+    
+}
 const player = new Player()
 const keys = {
     a: {
