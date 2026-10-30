@@ -140,6 +140,16 @@ addEventListener('keydown', ({key}) => {
         case ' ':
         case 'Space':
             console.log('shoot')
+            projectiles.push(new Projectile({
+                position: {
+                    x: 300,
+                    y: 300
+                },
+                velocity: {
+                    x: 0,
+                    y: -5
+                }
+            }))
             break
     }
 })
