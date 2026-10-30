@@ -77,6 +77,7 @@ class Projectile{
     }
 }
 const player = new Player()
+const projectiles = []
 const keys = {
     a: {
         pressed: false
@@ -96,6 +97,9 @@ function animate(){
     c.fillStyle = 'black'
     c.fillRect(0, 0, canvas.width, canvas.height)
     player.update()
+    projectiles.forEach(projectile => {
+        projectile.update()
+    });
 
     const speed = 7;
     const rotationamt = 0.15
