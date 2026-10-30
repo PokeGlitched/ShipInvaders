@@ -150,6 +150,7 @@ addEventListener('keydown', ({key}) => {
                     y: -10
                 }
             }))
+            console.log('projectile')
             break
     }
 })
