@@ -147,7 +147,7 @@ addEventListener('keydown', ({key}) => {
                 },
                 velocity: {
                     x: 0,
-                    y: -5
+                    y: -10
                 }
             }))
             break
