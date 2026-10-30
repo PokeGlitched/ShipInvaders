@@ -98,9 +98,10 @@ function animate(){
     c.fillRect(0, 0, canvas.width, canvas.height)
     player.update()
     projectiles.forEach((projectile, index)=> {
-        
         if (projectile.position.y + projectile.radius <= 0) {
+           setTimeout(() => {
             projectiles.splice(index, 1)
+        }, 0)
         } else {
         projectile.update()
         }
