@@ -142,8 +142,8 @@ addEventListener('keydown', ({key}) => {
             console.log('shoot')
             projectiles.push(new Projectile({
                 position: {
-                    x: 300,
-                    y: 300
+                    x: player.position.x + player.width/2,
+                    y: player.position.y
                 },
                 velocity: {
                     x: 0,
