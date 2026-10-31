@@ -248,6 +248,22 @@ let randomInt = (Math.floor(Math.random() * 500) + 500)
 
 console.log(randomInt)
 
+function createparticles({object, color}){
+    for (let i = 0; i < 15; i++){
+                particles.push(new Particle({
+                position: {
+                x: object.position.x + object.width / 2,
+                y: object.position.y + object.height/ 2
+                },
+                velocity:{
+                x: (Math.random() - 0.5) * 2,
+                y: (Math.random() - 0.5) * 2
+                },
+                radius: Math.random() * 3,
+                color: color || "#baa0de"}))                
+                }
+}
+
 function animate(){
     requestAnimationFrame(animate)
     c.fillStyle = 'black'
@@ -314,19 +330,9 @@ function animate(){
                 projectile.position.x - projectile.radius <= invader.position.x + invader.width &&
                 projectile.position.y + projectile.radius >= invader.position.y
             ) {
-                for (let i = 0; i < 15; i++){
-                particles.push(new Particle({
-                position: {
-                x: invader.position.x + invader.width / 2,
-                y: invader.position.y + invader.height/ 2
-                },
-                velocity:{
-                x: (Math.random() - 0.5) * 2,
-                y: (Math.random() - 0.5) * 2
-                },
-                radius: Math.random() * 3,
-                color: '#baa0de'}))                
-                }
+                createparticles(
+                    {object: invader}
+                )
 
                 grid.invaders.splice(i, 1)
                 projectiles.splice(j, 1)
