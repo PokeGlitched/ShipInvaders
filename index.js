@@ -232,7 +232,7 @@ function animate(){
     c.fillRect(0, 0, canvas.width, canvas.height)
     player.update()
     invaderProjectiles.forEach((iprojectile, jindex)=> {
-        if (iprojectile.position.y + iprojectile.radius <= 0) {
+        if (iprojectile.position.y <= 0) { 
            setTimeout(() => {
             projectiles.splice(jindex, 1)
         }, 0)
