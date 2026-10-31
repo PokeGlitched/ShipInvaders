@@ -212,7 +212,7 @@ class Particle{
         c.fillStyle = this.color
         c.fill()
         c.closePath()
-        c.save()
+        c.restore()
 
     }
 
@@ -266,10 +266,8 @@ function animate(){
     console.log(particles)
     
     invaderProjectiles.forEach((iprojectile, jindex)=> {
-        if (iprojectile.position.y <= 0) { 
-           setTimeout(() => {
-            projectiles.splice(jindex, 1)
-        }, 0)
+        if (iprojectile.position.y >= canvas.height) {
+    invaderProjectiles.splice(jindex, 1)
         } else {
         iprojectile.update()}
 
