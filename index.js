@@ -308,10 +308,10 @@ function animate(){
                 y: invader.position.y + invader.height/ 2
                 },
                 velocity:{
-                x: 2,
-                y: 2
+                x: Math.random() - 0.5,
+                y: Math.random() - 0.5
                 },
-                radius: 10,
+                radius: Math.random * 3,
                 color: 'yellow'}))                
                 }
 
