@@ -293,6 +293,10 @@ function animate(){
         iprojectile.position.x + iprojectile.width >= player.position.x &&
         iprojectile.position.x <= player.position.x + player.width){
         console.log("youlose")
+        createparticles({
+        object: player,
+        color: 'white'
+        })
         }
     });
     projectiles.forEach((projectile, index)=> {
