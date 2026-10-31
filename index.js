@@ -141,8 +141,8 @@ class Grid{
     for (let x = 0; x < columns; x++) {
         for (let y = 0; y < rows; y++) {
         this.invaders.push(new Invader({position: {
-            x: x * 30,
-            y: y * 30
+            x: this.position.x + x * 30,
+            y: this.position.y + y * 30
         }}))
         }
     }
@@ -150,16 +150,15 @@ class Grid{
     }
 
     update() {
-        this.position.x += this.velocity.x
-        this.position.y += this.position.y
+    this.position.x += this.velocity.x
+    this.position.y += this.velocity.y
+    this.velocity.y = 0
 
-        this.velocity.y = 0
-
-        if (this.position.x + this.width >= canvas.width || this.position.x <= 0) {
-            this.velocity.x = -this.velocity.x
-            this.velocity.y = 30
-        }
+    if (this.position.x + this.width >= canvas.width || this.position.x <= 0) {
+        this.velocity.x = -this.velocity.x
+        this.velocity.y = 30
     }
+}
 
 }
 
@@ -177,7 +176,7 @@ const keys = {
         pressed: false
     }
 }
-const grids = [new Grid]
+const grids = [new Grid()]
 
 player.draw()
 
@@ -198,9 +197,11 @@ function animate(){
 
 
     grids.forEach(grid => {
-        grid.invaders.forEach(invader => {
-            invader.update({velocity: grid.velocity})
-        })
+    grid.update()
+
+    grid.invaders.forEach(invader => {
+        invader.update({velocity: grid.velocity})
+    })
     })
 
 
