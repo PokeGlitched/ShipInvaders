@@ -196,17 +196,17 @@ class Grid{
 }
 
 class Particle{
-    constructor({position, velocity}){
+    constructor({position, velocity, radius, color}){
         this.position = position
         this.velocity = velocity 
-
-        this.radius = 4
+        this.radius = radius
+        this.color = color
     }
     
     draw() {
         c.beginPath()    
         c.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2)
-        c.fillStyle = 'white'
+        c.fillStyle = this.color
         c.fill()
         c.closePath()
     }
