@@ -4,7 +4,6 @@ const c = canvas.getContext('2d')
 canvas.width = innerWidth
 canvas.height = innerHeight
 
-
 class Player{
     constructor(){
         
@@ -53,8 +52,6 @@ class Player{
     }
 }
 
-
-
 class Projectile{
     constructor({position, velocity}){
         this.position = position
@@ -99,8 +96,6 @@ class invaderProjectile{
         this.position.y += this.velocity.y
     }
 }
-
-
 
 class Invader{
     constructor({position}){
@@ -157,7 +152,6 @@ class Invader{
     }
 }
 
-
 class Grid{
     constructor() {
         this.position = {
@@ -201,9 +195,10 @@ class Grid{
 
 }
 
-
 const player = new Player()
 const projectiles = []
+const grids = []
+const invaderProjectiles = []
 const keys = {
     a: {
         pressed: false
@@ -215,9 +210,6 @@ const keys = {
         pressed: false
     }
 }
-const grids = []
-const invaderProjectiles = []
-
 
 player.draw()
 
