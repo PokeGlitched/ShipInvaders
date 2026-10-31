@@ -301,7 +301,8 @@ function animate(){
                 projectile.position.x - projectile.radius <= invader.position.x + invader.width &&
                 projectile.position.y + projectile.radius >= invader.position.y
             ) {
-               particles.push(new Particle({
+                for (let i = 0; i < 15; i++){
+                particles.push(new Particle({
                 position: {
                 x: invader.position.x + invader.width / 2,
                 y: invader.position.y + invader.height/ 2
@@ -311,9 +312,9 @@ function animate(){
                 y: 2
                 },
                 radius: 10,
-                color: 'yellow'
-               })) 
-                
+                color: 'yellow'}))                
+                }
+
                 grid.invaders.splice(i, 1)
                 projectiles.splice(j, 1)
 
