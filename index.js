@@ -60,7 +60,7 @@ class Projectile{
         this.position = position
         this.velocity = velocity 
 
-        this.radius = 3
+        this.radius = 4
     }
     
     draw() {
@@ -204,30 +204,29 @@ function animate(){
     grids.forEach(grid => {
     grid.update()
 
-    grid.invaders.forEach((invader, i) => {
+    for (let i = grid.invaders.length - 1; i >= 0; i--) {
+        const invader = grid.invaders[i]
+
         invader.update({velocity: grid.velocity})
 
-        projectiles.forEach((projectile, j) => {
-            if (projectile.position.y - projectile.radius <= 
-                invader.position.y + invader.height && 
-                projectile.position.x + projectile.radius >=
-                invader.position.x &&
-                projectile.position.x - projectile.radius <=
-                invader.position.x &&
-                projectile.position.y + projectile.radius >=
-                invader.position.y) {
-                    setTimeout(() => {
-                        const invaderFound = grid.invaders.find(invader2 => {return invader2 === invader})
-                        const projectileFound = projectile.find(projectile2 => {return projectile2 === projectile})
-                        if(invaderFound && projectileFound){
-                        grid.invaders.splice(i, 1)
-                        projectiles.splice(j, 1)
-                        }
-                    })
-                }
-            })
-        })
-    })
+        if (!invader.position || !invader.image) continue
+
+        for (let j = projectiles.length - 1; j >= 0; j--) {
+            const projectile = projectiles[j]
+
+            if (
+                projectile.position.y - projectile.radius <= invader.position.y + invader.height &&
+                projectile.position.x + projectile.radius >= invader.position.x &&
+                projectile.position.x - projectile.radius <= invader.position.x + invader.width &&
+                projectile.position.y + projectile.radius >= invader.position.y
+            ) {
+                grid.invaders.splice(i, 1)
+                projectiles.splice(j, 1)
+                break
+            }
+        }
+    }
+})
 
 
     const speed = 7;
