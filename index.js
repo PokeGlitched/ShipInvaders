@@ -79,7 +79,7 @@ class Projectile{
 }
 
 class Invader{
-    constructor(position){
+    constructor({position}){
 
         this.velocity = {
             x: 0,
@@ -131,6 +131,8 @@ class Grid{
             y: 0
         } 
     
+        this.invaders = []
+
     for (let i = 0; i < 10; i++) {
         this.invaders.push(new Invader({position: {
             x: 0,
