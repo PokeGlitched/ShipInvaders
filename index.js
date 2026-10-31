@@ -231,8 +231,14 @@ function animate(){
     c.fillStyle = 'black'
     c.fillRect(0, 0, canvas.width, canvas.height)
     player.update()
-    invaderProjectiles.forEach((iprojectile)=> {
+    invaderProjectiles.forEach((iprojectile, jindex)=> {
+        if (iprojectile.position.y + iprojectile.radius <= 0) {
+           setTimeout(() => {
+            projectiles.splice(jindex, 1)
+        }, 0)
+        } else {
         iprojectile.update()
+        }
     });
     projectiles.forEach((projectile, index)=> {
         if (projectile.position.y + projectile.radius <= 0) {
@@ -248,6 +254,11 @@ function animate(){
     grids.forEach((grid, gridIndex) => {
     grid.update()
 
+    if (frames % 100 === 0 && grid.invaders.length > 0){
+        grid.invaders[Math.floor(Math.random() * grid.invaders.length)].shoot(invaderProjectiles)
+    }
+
+ 
     for (let i = grid.invaders.length - 1; i >= 0; i--) {
         const invader = grid.invaders[i]
 
@@ -305,6 +316,7 @@ function animate(){
         frames = 0
         console.log(randomInt)
     }
+    
     frames++
 }
 
