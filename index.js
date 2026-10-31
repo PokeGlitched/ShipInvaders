@@ -228,7 +228,7 @@ function animate(){
                     const lastInvader = [grid.invaders.length - 1]
 
                     grid.width = lastInvader.position.x - firstInvader.position.x + lastInvader.width
-
+                    grid.position.x = firstInvader.position.x
                 }
                 break
             }
