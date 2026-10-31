@@ -222,6 +222,7 @@ const player = new Player()
 const projectiles = []
 const grids = []
 const invaderProjectiles = []
+const particles = []
 const keys = {
     a: {
         pressed: false
