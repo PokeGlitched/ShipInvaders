@@ -308,11 +308,11 @@ function animate(){
                 y: invader.position.y + invader.height/ 2
                 },
                 velocity:{
-                x: Math.random() - 0.5,
-                y: Math.random() - 0.5
+                x: (Math.random() - 0.5) * 2,
+                y: (Math.random() - 0.5) * 2
                 },
                 radius: Math.random() * 3,
-                color: 'yellow'}))                
+                color: '#baa0de'}))                
                 }
 
                 grid.invaders.splice(i, 1)
