@@ -108,11 +108,11 @@ class Invader{
                 c.drawImage(this.image, this.position.x, this.position.y, this.width, this.height)
             }    
     }
-    update() {
+    update({velocity}) {
         this.draw()
         if(this.position) {
-            this.position.x += this.velocity.x
-            this.position.y += this.velocity.y
+            this.position.x += velocity.x
+            this.position.y += velocity.y
 
         }
     }
@@ -127,7 +127,7 @@ class Grid{
         }
     
         this.velocity = {
-            x: 0,
+            x: 3,
             y: 0
         } 
     
@@ -147,7 +147,12 @@ class Grid{
         console.log(this.invaders)
     }
 
-    update() {}
+    update() {
+        this.position.x += this.velocity.x
+        this.position.y += this.position.y
+
+        
+    }
 
 }
 
@@ -187,7 +192,7 @@ function animate(){
 
     grids.forEach(grid => {
         grid.invaders.forEach(invader => {
-            invader.update()
+            invader.update({velocity: grid.velocity})
         })
     })
 
