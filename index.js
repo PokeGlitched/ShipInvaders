@@ -181,6 +181,9 @@ const grids = []
 player.draw()
 
 let frames = 0
+let randomInt = (Math.floor(Math.random() * 500) + 500)
+
+console.log(randomInt)
 
 function animate(){
     requestAnimationFrame(animate)
@@ -222,8 +225,11 @@ function animate(){
         player.rotation = 0
     }
     console.log(frames)
-    if (frames % 1000 === 0){
+    if (frames % randomInt === 0){
         grids.push(new Grid())
+        randomInt = (Math.floor(Math.random() * 500) + 500)
+        frames = 0
+        console.log(randomInt)
     }
     frames++
 }
