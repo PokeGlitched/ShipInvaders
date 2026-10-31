@@ -201,20 +201,26 @@ class Particle{
         this.velocity = velocity 
         this.radius = radius
         this.color = color
+        this.opacity = 1
     }
     
     draw() {
+        c.save()
+        c.globalAlpha = this.opacity
         c.beginPath()    
         c.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2)
         c.fillStyle = this.color
         c.fill()
         c.closePath()
+        c.save()
+
     }
 
     update() {
         this.draw()
         this.position.x += this.velocity.x
         this.position.y += this.velocity.y
+        this.opacity += -0.01
     }
 }
 
@@ -247,9 +253,18 @@ function animate(){
     c.fillStyle = 'black'
     c.fillRect(0, 0, canvas.width, canvas.height)
     player.update()
-    particles.forEach(particle => {
+    particles.forEach((particle, i) => {
+        if (particle.opacity <= 0){
+            setTimeout(() => {
+            particles.splice(i, 1)
+            }, 0)
+        } else {
         particle.update()
+        }
     })
+
+    console.log(particles)
+    
     invaderProjectiles.forEach((iprojectile, jindex)=> {
         if (iprojectile.position.y <= 0) { 
            setTimeout(() => {
