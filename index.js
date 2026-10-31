@@ -129,9 +129,7 @@ class Grid{
         this.velocity = {
             x: 0,
             y: 0
-        }
-
-    this.invaders = [new Invader()]   
+        } 
     
     for (let i = 0; i < 10; i++) {
         this.invaders.push(new Invader({position: {
