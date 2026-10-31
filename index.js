@@ -216,6 +216,8 @@ const keys = {
     }
 }
 const grids = []
+const invaderProjectiles = []
+
 
 player.draw()
 
@@ -229,6 +231,9 @@ function animate(){
     c.fillStyle = 'black'
     c.fillRect(0, 0, canvas.width, canvas.height)
     player.update()
+    invaderProjectiles.forEach((iprojectile)=> {
+        iprojectile.update()
+    });
     projectiles.forEach((projectile, index)=> {
         if (projectile.position.y + projectile.radius <= 0) {
            setTimeout(() => {
