@@ -180,6 +180,8 @@ const grids = [new Grid()]
 
 player.draw()
 
+let frames = 0
+
 function animate(){
     requestAnimationFrame(animate)
     c.fillStyle = 'black'
@@ -219,6 +221,8 @@ function animate(){
         player.velocity.x = 0
         player.rotation = 0
     }
+
+    frames++
 }
 
 if (player.image && player.image.onload) {player.image.onload();} {
