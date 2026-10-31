@@ -83,14 +83,13 @@ class invaderProjectile{
         this.position = position
         this.velocity = velocity 
 
-        this.radius = 4
+        this.width = 3
+        this.height = 10
     }
     
     draw() {
-        c.beginPath()    
-        c.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2)
         c.fillStyle = 'white'
-        c.fill()
+        c.fillRect(this.position.x, this.position.y, this.width, this.height)
         c.closePath()
     }
 
