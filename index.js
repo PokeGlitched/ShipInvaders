@@ -237,7 +237,14 @@ function animate(){
             projectiles.splice(jindex, 1)
         }, 0)
         } else {
-        iprojectile.update()
+        iprojectile.update()}
+
+        if (player.position &&
+        iprojectile.position.y + iprojectile.height >= player.position.y &&
+        iprojectile.position.y <= player.position.y + player.height &&
+        iprojectile.position.x + iprojectile.width >= player.position.x &&
+        iprojectile.position.x <= player.position.x + player.width){
+        console.log("youlose")
         }
     });
     projectiles.forEach((projectile, index)=> {
