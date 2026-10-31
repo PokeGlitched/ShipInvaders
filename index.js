@@ -213,7 +213,9 @@ function animate(){
                 projectile.position.x + projectile.radius >=
                 invader.position.x &&
                 projectile.position.x - projectile.radius <=
-                invader.position.x) {
+                invader.position.x &&
+                projectile.position.y + projectile.radius >=
+                invader.position.y) {
                     setTimeout(() => {
                         grid.invaders.splice(i, 1)
                         projectiles.splice(j, 1)
