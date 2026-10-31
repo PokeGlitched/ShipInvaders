@@ -247,6 +247,9 @@ function animate(){
     c.fillStyle = 'black'
     c.fillRect(0, 0, canvas.width, canvas.height)
     player.update()
+    particles.forEach(particle => {
+        particle.update()
+    })
     invaderProjectiles.forEach((iprojectile, jindex)=> {
         if (iprojectile.position.y <= 0) { 
            setTimeout(() => {
