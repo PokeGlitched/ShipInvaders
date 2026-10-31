@@ -311,7 +311,7 @@ function animate(){
                 x: Math.random() - 0.5,
                 y: Math.random() - 0.5
                 },
-                radius: Math.random * 3,
+                radius: Math.random() * 3,
                 color: 'yellow'}))                
                 }
 
