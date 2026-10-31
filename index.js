@@ -297,6 +297,7 @@ function animate(){
         object: player,
         color: 'white'
         })
+        invaderProjectiles.splice(jindex, 1) 
         }
     });
     projectiles.forEach((projectile, index)=> {
