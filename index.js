@@ -133,6 +133,10 @@ class Grid{
 
     this.invaders = [new Invader()]   
     
+    for (let i = 0; i < 10; i++) {
+        this.invaders.push(new Invader())
+        }
+        console.log(this.invaders)
     }
     update() {}
 
