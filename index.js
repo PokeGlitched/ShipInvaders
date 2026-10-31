@@ -217,11 +217,13 @@ function animate(){
                 projectile.position.y + projectile.radius >=
                 invader.position.y) {
                     setTimeout(() => {
+                        const invaderFound = grid.invaders.find(invader2 => {return invader2 === invader})
+                        if(invaderFound){
                         grid.invaders.splice(i, 1)
                         projectiles.splice(j, 1)
+                        }
                     })
                 }
-        
             })
         })
     })
