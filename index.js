@@ -218,7 +218,8 @@ function animate(){
                 invader.position.y) {
                     setTimeout(() => {
                         const invaderFound = grid.invaders.find(invader2 => {return invader2 === invader})
-                        if(invaderFound){
+                        const projectileFound = projectile.find(projectile2 => {return projectile2 === projectile})
+                        if(invaderFound && projectileFound){
                         grid.invaders.splice(i, 1)
                         projectiles.splice(j, 1)
                         }
