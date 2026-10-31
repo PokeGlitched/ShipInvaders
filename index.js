@@ -133,14 +133,17 @@ class Grid{
     
         this.invaders = []
 
-    for (let i = 0; i < 10; i++) {
+    for (let x = 0; x < 10; x++) {
+        for (let y = 0; y < 10; y++) {
         this.invaders.push(new Invader({position: {
-            x: i * 30,
-            y: 0
+            x: x * 30,
+            y: y * 30
         }}))
         }
+    }
         console.log(this.invaders)
     }
+
     update() {}
 
 }
