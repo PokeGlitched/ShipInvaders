@@ -176,7 +176,7 @@ const keys = {
         pressed: false
     }
 }
-const grids = [new Grid()]
+const grids = []
 
 player.draw()
 
