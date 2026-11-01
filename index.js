@@ -297,6 +297,22 @@ for (let i = 0; i < 250; i++){
                 fades: false
                 }))}
 
+function drawStartScreen() {
+    c.fillStyle = "black"
+    c.fillRect(0, 0, canvas.widtht, canvas.height)
+
+    c.fillStyle = "#baa0de"
+    c.font = "bold 48px sans-serif, monospace"
+    c.textAlign = "center"
+    c.textBaseline = "middle"
+    c.fillText("SPACE INVADERS", canvas.width/2, canvas.height/2 - 40)
+
+    c.fillStyle = "white"
+    c.font = "20px sans-serif, monospace"
+    c.fillText("Hit enter to Start Game", canvas.width/2, canvas.height/2 + 40)
+
+}
+
 
 function createparticles({object, color}){
     for (let i = 0; i < 15; i++){
