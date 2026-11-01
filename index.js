@@ -355,17 +355,17 @@ function createparticles({object, color}){
 function animate(){
     requestAnimationFrame(animate)
 
-    if (!game.active && currentGameState !== STATES.GAMEOVER) return
-
     if (currentGameState === STATES.START) {
-        drawStartScreen();
-        return;
+        drawStartScreen()
+        return
     }
 
     if (currentGameState === STATES.GAMEOVER) {
-        drawGameOver();
-        return;
+        drawGameOver()
+        return
     }
+
+    if (!game.active) return
 
     c.fillStyle = 'black'
     c.fillRect(0, 0, canvas.width, canvas.height)
