@@ -379,6 +379,7 @@ function animate(){
             ) {
                 score += 100
                 console.log(score)
+                scoreEL.innerHTML = score
                 createparticles(
                     {object: invader}
                 )
