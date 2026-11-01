@@ -353,9 +353,10 @@ function createparticles({object, color}){
 }
 
 function animate(){
-    if (!game.active) return
     requestAnimationFrame(animate)
 
+    if (!game.active && currentGameState !== STATES.GAMEOVER) return
+    
     if (currentGameState === STATES.START) {
         drawStartScreen();
         return;
@@ -545,7 +546,7 @@ addEventListener('keydown', ({key}) => {
         case 'Enter':
             if (currentGameState === STATES.START) {
                 currentGameState = STATES.PLAYING
-            } else if (currentGameState === STATES.GAMEOVER)
+            } else if (currentGameState === STATES.GAMEOVER) {
                 score = 0
                 game.over = false
                 player.position = {
@@ -558,7 +559,7 @@ addEventListener('keydown', ({key}) => {
                 projectiles.length = 0
                 grids.length = 0
                 invaderProjectiles.length = 0
-                currentGameState = STATES.START
+                currentGameState = STATES.START}
     }
 })
 
