@@ -248,6 +248,20 @@ let randomInt = (Math.floor(Math.random() * 500) + 500)
 
 console.log(randomInt)
 
+for (let i = 0; i < 100; i++){
+                particles.push(new Particle(
+                {position: {
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height
+                },
+                velocity:{
+                x: 0,
+                y: 1
+                },
+                radius: Math.random() * 2,
+                color: 'white'}))}
+
+
 function createparticles({object, color}){
     for (let i = 0; i < 15; i++){
                 particles.push(new Particle({
