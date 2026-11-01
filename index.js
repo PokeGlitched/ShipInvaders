@@ -1,10 +1,28 @@
-const scoreEL = document.querySelector('#scoreEL')
 const canvas = document.querySelector('canvas')
 const c = canvas.getContext('2d')
-// console.log(scoreEL)
 
-canvas.width = innerWidth
-canvas.height = innerHeight
+canvas.width = 1024
+canvas.height = 576
+
+function resizeCanvas() {
+    const scale = Math.min(
+        window.innerWidth / 1024,
+        window.innerHeight / 576
+    )
+
+    const width = 1024 * scale
+    const height = 576 * scale
+
+    canvas.style.width = `${width}px`
+    canvas.style.height = `${height}px`
+
+    const game = document.querySelector('#game')
+    game.style.width = `${width}px`
+    game.style.height = `${height}px`
+}
+
+resizeCanvas()
+window.addEventListener('resize', resizeCanvas)
 
 class Player{
     constructor(){
