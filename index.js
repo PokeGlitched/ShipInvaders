@@ -423,6 +423,9 @@ if (player.image && player.image.onload) {player.image.onload();} {
     animate()
 }
 
+if (game.over) 
+    return
+else {
 addEventListener('keydown', ({key}) => {
     switch (key) {
         case 'a':
@@ -455,7 +458,7 @@ addEventListener('keydown', ({key}) => {
             console.log([projectiles])
             break
     }
-})
+}) 
 
 addEventListener('keyup', ({key}) => {
     switch (key) {
@@ -478,4 +481,4 @@ addEventListener('keyup', ({key}) => {
             console.log('shoot')
             break
     }
-})
+}) }
