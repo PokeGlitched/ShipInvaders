@@ -14,11 +14,12 @@ News Flash: I am just learning how to code. As such, I used AI for two main purp
 - No restart button
 - Game stops upon death, need to reload page to retry
 
+**V1.1**
+- Added actual UI (game over and begin screen)
+
 Version 2 additions (coming soon!)
-- Actual UI (game over, begin, etc.)
 - Music and or sfx
 - Retheme game to the Odyessy (might be version 3)
-
 
 Tutorial used for this project (gave code, help, and all assets for 1.0):
 Space Invaders Game Tutorial with JavaScript and HTML Canvas by Chris Courses
