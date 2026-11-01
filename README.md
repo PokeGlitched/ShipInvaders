@@ -6,6 +6,8 @@ I made this game for Week 2 of Terra. I was inspired by the theme word "antique"
 
 Anyways, this game was made mainly through JS and canvas on HTML, leading to a very fun time figuring out how HTML and JS can be used for things besides websites! Because of my skill level (i don't think my expertise counts as skills but oh well), I had to use a tutorial (linked below) to help me make this game.
 
+To play the game, simply go to https://pokeglitched.github.io/ShipInvaders/
+
 **Controls**
 AD or Arrow Keys to Move
 Space to Shoot
