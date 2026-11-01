@@ -314,6 +314,7 @@ function drawStartScreen() {
     c.fillStyle = "white"
     c.font = "20px sans-serif, monospace"
     c.fillText("Hit enter to Start Game", canvas.width/2, canvas.height/2 + 40)
+    c.fillText("AD or Arrows to move horizontally; Space to shoot!", canvas.width/2, canvas.height/2 + 60)
 }
 
 function drawGameOver() {
