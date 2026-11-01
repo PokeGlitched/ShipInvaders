@@ -14,7 +14,7 @@ class Player{
         }
 
         this.rotation = 0
-
+        this.opacity = 1
         const image = new Image()
         image.src = 'assets/images/spaceship.png'
 
@@ -34,6 +34,7 @@ class Player{
          //c.fillRect(this.position.x, this.position.y, this.width, this.height)
         if (!this.image || !this.position) return;
             c.save()
+            c.globalAlpha = this.opacity
             c.translate(this.position.x + this.width/2, this.position.y + player.height/2)
             c.rotate(this.rotation)
             c.translate(-this.position.x -this.width/2, - this.position.y - player.height/2)
@@ -247,6 +248,10 @@ player.draw()
 
 let frames = 0
 let randomInt = (Math.floor(Math.random() * 500) + 500)
+let game = {
+    over: false,
+    active: false
+}
 
 console.log(randomInt)
 
@@ -326,7 +331,7 @@ function animate(){
         setTimeout(() => {
             invaderProjectiles.splice(jindex, 1)
             player.opacity = 0
-            
+            game.over = true
         }) 
         }
     });
