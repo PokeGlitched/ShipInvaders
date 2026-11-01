@@ -250,7 +250,7 @@ let frames = 0
 let randomInt = (Math.floor(Math.random() * 500) + 500)
 let game = {
     over: false,
-    active: false
+    active: true
 }
 
 console.log(randomInt)
@@ -291,6 +291,7 @@ function createparticles({object, color}){
 }
 
 function animate(){
+    if (!game.active) return
     requestAnimationFrame(animate)
     c.fillStyle = 'black'
     c.fillRect(0, 0, canvas.width, canvas.height)
@@ -332,7 +333,10 @@ function animate(){
             invaderProjectiles.splice(jindex, 1)
             player.opacity = 0
             game.over = true
-        }) 
+        }, 0) 
+        setTimeout(() => {
+            game.active = false
+        }, 2000) 
         }
     });
     projectiles.forEach((projectile, index)=> {
