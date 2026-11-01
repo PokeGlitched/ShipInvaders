@@ -26,9 +26,15 @@ News Flash: I am just learning how to code. As such, I used AI for two main purp
 **V1.1**
 - Added actual UI (game over and begin screen)
 
-Version 2 additions (coming soon!)
-- Music and or sfx
-- Retheme game to the Odyessy (might be version 3)
+**Version 2**
+- Background Music
+- Rethemed game to the Odyessy
+
+**Version 3 (Potentially released)**
+- Will have powerups
+- Will have a final boss
+- Will have dynamic wave scaling
+- Will have best score saved locally
 
 Tutorial used for this project (gave code, help, and all assets for 1.0):
 Space Invaders Game Tutorial with JavaScript and HTML Canvas by Chris Courses
