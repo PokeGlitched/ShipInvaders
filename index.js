@@ -507,7 +507,7 @@ if (player.image && player.image.onload) {player.image.onload();} {
 }
 
 addEventListener('keydown', ({key}) => {
-    if (game.over) return
+    if (game.over & key !== "Enter") return
 
     switch (key) {
         case 'a':
@@ -562,7 +562,6 @@ addEventListener('keydown', ({key}) => {
                 projectiles.length = 0
                 grids.length = 0
                 invaderProjectiles.length = 0
-                particles.length = 0
 
                 frames = 0
                 currentGameState = STATES.PLAYING}
