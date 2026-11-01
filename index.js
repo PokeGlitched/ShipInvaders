@@ -263,9 +263,15 @@ const keys = {
         pressed: false
     }
 }
+const STATES = {
+    START: "START",
+    PLAYING: "PLAYING",
+    GAMEOVER: "GAMEOVER"
+}
 
 player.draw()
 
+let currentGameState = STATES.START
 let frames = 0
 let randomInt = (Math.floor(Math.random() * 500) + 500)
 let game = {
