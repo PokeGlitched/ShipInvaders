@@ -40,14 +40,18 @@ class Player{
 
         image.onload = () => {
             const resizescale = 0.15
+
             this.image = image
             this.width = image.width * resizescale
             this.height = image.height * resizescale
+
             this.position = {
-                    x: (canvas.width - this.width)/2,
-                    y: canvas.height - this.height - 20
+                x: (canvas.width - this.width) / 2,
+                y: canvas.height - this.height - 20
             }
-        }
+
+            this.velocity = { x: 0, y: 0 }
+}
     }
     draw() {
             //c.fillStyle = 'red'
@@ -313,10 +317,10 @@ function drawStartScreen() {
 }
 
 function drawGameOver() {
-    c.fillStyle = "#0F172AD9"
+    c.fillStyle = "black"
     c.fillRect(0, 0, canvas.width, canvas.height)
 
-    c.fillStyle = "yellow"
+    c.fillStyle = "#baa0de"
     c.font = "bold 48px sans-serif, monospace"
     c.textAlign = "center"
     c.textBaseline = "middle"
@@ -551,14 +555,23 @@ addEventListener('keydown', ({key}) => {
                 scoreEL.innerHTML = score
                 game.over = false
                 game.active = true
-                player.position = {
-                    x: (canvas.width - this.width)/2,
-                    y: canvas.height - this.height - 20
-                }
-                player.velocity = {x: 0, y: 0}
-                player.rotation = 0
-                player.opacity = 1
+                if (player.image) {
+                    player.position = {
+                        x: (canvas.width - player.width) / 2,
+                        y: canvas.height - player.height - 20
+                    }
 
+                    player.velocity = { x: 0, y: 0 }
+                    player.rotation = 0
+                    player.opacity = 1
+                }
+                // console.log('Player after restart:', {
+                // image: player.image,
+                // position: player.position,
+                // width: player.width,
+                // height: player.height,
+                // opacity: player.opacity
+                // })
                 projectiles.length = 0
                 grids.length = 0
                 invaderProjectiles.length = 0
