@@ -250,7 +250,7 @@ let randomInt = (Math.floor(Math.random() * 500) + 500)
 
 console.log(randomInt)
 
-for (let i = 0; i < 100; i++){
+for (let i = 0; i < 250; i++){
                 particles.push(new Particle(
                 {position: {
                 x: Math.random() * canvas.width,
@@ -291,6 +291,11 @@ function animate(){
     c.fillRect(0, 0, canvas.width, canvas.height)
     player.update()
     particles.forEach((particle, i) => {
+        
+        if (particle.position.y - particle.radius >= canvas.height) {
+            particle.position.x = Math.random() * canvas.width
+            particle.position.y = -particle.radius
+        }
         if (particle.opacity <= 0){
             setTimeout(() => {
             particles.splice(i, 1)
