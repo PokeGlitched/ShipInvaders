@@ -299,7 +299,7 @@ for (let i = 0; i < 250; i++){
 
 function drawStartScreen() {
     c.fillStyle = "black"
-    c.fillRect(0, 0, canvas.widtht, canvas.height)
+    c.fillRect(0, 0, canvas.width, canvas.height)
 
     c.fillStyle = "#baa0de"
     c.font = "bold 48px sans-serif, monospace"
