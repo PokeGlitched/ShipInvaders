@@ -1,7 +1,7 @@
 const scoreEL = document.querySelector('#scoreEL')
 const canvas = document.querySelector('canvas')
 const c = canvas.getContext('2d')
-console.log(scoreEL)
+// console.log(scoreEL)
 
 canvas.width = innerWidth
 canvas.height = innerHeight
@@ -182,7 +182,7 @@ class Grid{
         }}))
         }
     }
-        console.log(this.invaders)
+        // console.log(this.invaders)
     }
 
     update() {
@@ -254,8 +254,9 @@ let game = {
     over: false,
     active: true
 }
+let score = 0
 
-console.log(randomInt)
+// console.log(randomInt)
 
 for (let i = 0; i < 250; i++){
                 particles.push(new Particle(
@@ -313,7 +314,7 @@ function animate(){
         }
     })
 
-    console.log(particles)
+    // console.log(particles)
     
     invaderProjectiles.forEach((iprojectile, jindex)=> {
         if (iprojectile.position.y >= canvas.height) {
@@ -376,6 +377,8 @@ function animate(){
                 projectile.position.x - projectile.radius <= invader.position.x + invader.width &&
                 projectile.position.y + projectile.radius >= invader.position.y
             ) {
+                score += 100
+                console.log(score)
                 createparticles(
                     {object: invader}
                 )
@@ -414,12 +417,12 @@ function animate(){
         player.velocity.x = 0
         player.rotation = 0
     }
-    console.log(frames)
+    // console.log(frames)
     if (frames % randomInt === 0){
         grids.push(new Grid())
         randomInt = (Math.floor(Math.random() * 500) + 500)
         frames = 0
-        console.log(randomInt)
+        // console.log(randomInt)
     }
     
     frames++
@@ -437,19 +440,19 @@ addEventListener('keydown', ({key}) => {
         case 'A':
         case 'ArrowLeft':
         case 'left':
-            console.log('left')
+            // console.log('left')
             keys.a.pressed = true
             break
         case 'd':
         case 'D':
         case 'ArrowRight':
         case 'right':
-            console.log('right')
+            // console.log('right')
             keys.d.pressed = true
             break
         case ' ':
         case 'Space':
-            console.log('shoot')
+            // console.log('shoot')
             projectiles.push(new Projectile({
                 position: {
                     x: player.position.x + player.width/2,
@@ -460,7 +463,7 @@ addEventListener('keydown', ({key}) => {
                     y: -10
                 }
             }))
-            console.log([projectiles])
+            // console.log([projectiles])
             break
     }
 })
@@ -471,19 +474,19 @@ addEventListener('keyup', ({key}) => {
         case 'A':
         case 'ArrowLeft':
         case 'left':
-            console.log('left')
+            // console.log('left')
             keys.a.pressed = false
             break
         case 'd':
         case 'D':
         case 'ArrowRight':
         case 'right':
-            console.log('right')
+            // console.log('right')
             keys.d.pressed = false
             break
         case ' ':
         case 'Space':
-            console.log('shoot')
+            // console.log('shoot')
             break
     }
 })
