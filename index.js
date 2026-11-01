@@ -548,7 +548,9 @@ addEventListener('keydown', ({key}) => {
                 currentGameState = STATES.PLAYING
             } else if (currentGameState === STATES.GAMEOVER) {
                 score = 0
+                scoreEL.innerHTML = score
                 game.over = false
+                game.active = true
                 player.position = {
                     x: (canvas.width - this.width)/2,
                     y: canvas.height - this.height - 20
@@ -556,10 +558,14 @@ addEventListener('keydown', ({key}) => {
                 player.velocity = {x: 0, y: 0}
                 player.rotation = 0
                 player.opacity = 1
+
                 projectiles.length = 0
                 grids.length = 0
                 invaderProjectiles.length = 0
-                currentGameState = STATES.START}
+                particles.length = 0
+
+                frames = 0
+                currentGameState = STATES.PLAYING}
     }
 })
 
