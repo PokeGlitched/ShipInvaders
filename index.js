@@ -378,7 +378,7 @@ function animate(){
         drawStartScreen()
         return
     }
-
+    
     if (currentGameState === STATES.GAMEOVER) {
         drawGameOver()
         return
