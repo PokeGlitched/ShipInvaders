@@ -23,3 +23,10 @@ Version 2 additions (coming soon!)
 Tutorial used for this project (gave code, help, and all assets for 1.0):
 Space Invaders Game Tutorial with JavaScript and HTML Canvas by Chris Courses
 https://youtu.be/MCVU0w73uKI
+
+Screenies! (I had to learn to how screenshot **so** quick for some of these)
+![Start Screen](<Screenshot 2026-11-01 155411.png>)
+![Enemies on Screen](<Screenshot 2026-11-01 155534.png>) 
+![Enemies on Screen](<Screenshot 2026-11-01 010650.png>) 
+![Empty Background, after killing all the enemies](<Screenshot 2026-11-01 155338.png>) 
+![Game Over! Good try!](<Screenshot 2026-11-01 155359.png>) 
