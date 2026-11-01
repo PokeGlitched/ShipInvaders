@@ -43,7 +43,7 @@ https://youtu.be/MCVU0w73uKI
 Tutorial for octopus/monster pixel art help:
 https://www.youtube.com/watch?v=C0TgcZT7mj0
 
-Screenies! (I had to learn to how screenshot **so** quick for some of these)
+Screenies from V1.1! (I had to learn to how screenshot **so** quick for some of these)
 ![Start Screen](<assets/screenshotsforreadme/Screenshot 2026-11-01 155942.png>)
 ![Enemies on Screen](<assets/screenshotsforreadme/Screenshot 2026-11-01 155534.png>)
 ![Enemies on Screen](<assets/screenshotsforreadme/Screenshot 2026-11-01 010650.png>)
