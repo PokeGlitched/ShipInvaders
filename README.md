@@ -11,3 +11,8 @@ Version 2 additions (coming soon!)
 - Actual UI (game over, begin, etc.)
 - Music and or sfx
 - Retheme game to the Odyessy (might be version 3)
+
+
+Tutorial used for this project (gave code, help, and all assets for 1.0):
+Space Invaders Game Tutorial with JavaScript and HTML Canvas by Chris Courses
+https://youtu.be/MCVU0w73uKI
