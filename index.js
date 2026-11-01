@@ -406,9 +406,11 @@ function animate(){
             invaderProjectiles.splice(jindex, 1)
             player.opacity = 0
             game.over = true
+
         }, 0) 
         setTimeout(() => {
             game.active = false
+            currentGameState = STATES.GAMEOVER
         }, 2000) 
         }
     });
