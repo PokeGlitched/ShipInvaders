@@ -357,13 +357,13 @@ function animate(){
     requestAnimationFrame(animate)
 
     if (currentGameState === STATES.START) {
-        drawStartScreen()
-        return
+        drawStartScreen();
+        return;
     }
 
-    if (currentGameState === STATES.START) {
-        drawGameOverScreen()
-        return
+    if (currentGameState === STATES.GAMEOVER) {
+        drawGameOver();
+        return;
     }
 
     c.fillStyle = 'black'
@@ -585,3 +585,5 @@ addEventListener('keyup', ({key}) => {
             break
     }
 })
+
+animate();
