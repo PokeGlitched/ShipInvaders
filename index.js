@@ -553,9 +553,9 @@ addEventListener('keydown', ({key}) => {
                 player.velocity = {x: 0, y: 0}
                 player.rotation = 0
                 player.opacity = 1
-                projectiles = 0
-                grids = 0
-                invaderProjectiles = 0
+                projectiles.length = 0
+                grids.length = 0
+                invaderProjectiles.length = 0
                 currentGameState = STATES.START
     }
 })
