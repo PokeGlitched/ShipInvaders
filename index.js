@@ -323,7 +323,11 @@ function animate(){
         object: player,
         color: 'white'
         })
-        invaderProjectiles.splice(jindex, 1) 
+        setTimeout(() => {
+            invaderProjectiles.splice(jindex, 1)
+            player.opacity = 0
+            
+        }) 
         }
     });
     projectiles.forEach((projectile, index)=> {
