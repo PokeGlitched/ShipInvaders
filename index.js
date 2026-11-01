@@ -472,18 +472,22 @@ addEventListener('keydown', ({key}) => {
         case ' ':
         case 'Space':
             // console.log('shoot')
+        if (!keys.space.pressed) {
+            keys.space.pressed = true
+
             projectiles.push(new Projectile({
-                position: {
-                    x: player.position.x + player.width/2,
-                    y: player.position.y
-                },
-                velocity: {
-                    x: 0,
-                    y: -10
-                }
-            }))
-            // console.log([projectiles])
-            break
+            position: {
+                x: player.position.x + player.width / 2,
+                y: player.position.y
+            },
+            velocity: {
+                x: 0,
+                y: -10
+            }
+        }))
+        }
+        // console.log([projectiles])
+        break
     }
 })
 
@@ -506,6 +510,7 @@ addEventListener('keyup', ({key}) => {
         case ' ':
         case 'Space':
             // console.log('shoot')
+            keys.space.pressed = false
             break
     }
 })
