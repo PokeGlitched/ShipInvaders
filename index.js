@@ -88,7 +88,7 @@ class Projectile{
     draw() {
         c.beginPath()    
         c.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2)
-        c.fillStyle = 'white'
+        c.fillStyle = '#323637'
         c.fill()
         c.closePath()
     }
@@ -105,13 +105,14 @@ class invaderProjectile{
         this.position = position
         this.velocity = velocity 
 
-        this.width = 3
-        this.height = 10
+        this.radius = 4
     }
     
     draw() {
-        c.fillStyle = 'white'
-        c.fillRect(this.position.x, this.position.y, this.width, this.height)
+        c.beginPath()    
+        c.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2)
+        c.fillStyle = '#847B77'
+        c.fill()
         c.closePath()
     }
 
@@ -121,6 +122,7 @@ class invaderProjectile{
         this.position.y += this.velocity.y
     }
 }
+
 
 class Invader{
     constructor({position}){
@@ -302,10 +304,10 @@ for (let i = 0; i < 250; i++){
                 }))}
 
 function drawStartScreen() {
-    c.fillStyle = "black"
+    c.fillStyle = "#b7d0d0"
     c.fillRect(0, 0, canvas.width, canvas.height)
 
-    c.fillStyle = "#baa0de"
+    c.fillStyle = "#ff8181"
     c.font = "bold 48px sans-serif, monospace"
     c.textAlign = "center"
     c.textBaseline = "middle"
@@ -318,10 +320,10 @@ function drawStartScreen() {
 }
 
 function drawGameOver() {
-    c.fillStyle = "black"
+    c.fillStyle = "#b7d0d0"
     c.fillRect(0, 0, canvas.width, canvas.height)
 
-    c.fillStyle = "#baa0de"
+    c.fillStyle = "#ff8181"
     c.font = "bold 48px sans-serif, monospace"
     c.textAlign = "center"
     c.textBaseline = "middle"
@@ -350,7 +352,7 @@ function createparticles({object, color}){
                 y: (Math.random() - 0.5) * 2
                 },
                 radius: Math.random() * 3,
-                color: color || "#baa0de",
+                color: color || "#ff8181",
                 fades: true
             }))                
             }
@@ -372,7 +374,7 @@ function animate(){
 
     if (!game.active) return
 
-    c.fillStyle = 'black'
+    c.fillStyle = '#b7d0d0'
     c.fillRect(0, 0, canvas.width, canvas.height)
     player.update()
     particles.forEach((particle, i) => {
@@ -399,14 +401,14 @@ function animate(){
         iprojectile.update()}
 
         if (player.position &&
-        iprojectile.position.y + iprojectile.height >= player.position.y &&
-        iprojectile.position.y <= player.position.y + player.height &&
-        iprojectile.position.x + iprojectile.width >= player.position.x &&
-        iprojectile.position.x <= player.position.x + player.width){
+                iprojectile.position.y - iprojectile.radius <= player.position.y + player.height &&
+                iprojectile.position.x + iprojectile.radius >= player.position.x &&
+                iprojectile.position.x - iprojectile.radius <= player.position.x + player.width &&
+                iprojectile.position.y + iprojectile.radius >= player.position.y){
         console.log("youlose")
         createparticles({
         object: player,
-        color: 'white'
+        color: '#9E7665'
         })
         setTimeout(() => {
             invaderProjectiles.splice(jindex, 1)
@@ -542,7 +544,7 @@ addEventListener('keydown', ({key}) => {
             },
             velocity: {
                 x: 0,
-                y: -10
+                y: -5
             }
         }))
         }
