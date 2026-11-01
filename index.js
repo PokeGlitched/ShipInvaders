@@ -355,6 +355,17 @@ function createparticles({object, color}){
 function animate(){
     if (!game.active) return
     requestAnimationFrame(animate)
+
+    if (currentGameState === STATES.START) {
+        drawStartScreen()
+        return
+    }
+
+    if (currentGameState === STATES.START) {
+        drawGameOverScreen()
+        return
+    }
+
     c.fillStyle = 'black'
     c.fillRect(0, 0, canvas.width, canvas.height)
     player.update()
@@ -529,6 +540,23 @@ addEventListener('keydown', ({key}) => {
         }
         // console.log([projectiles])
         break
+        case 'Enter':
+            if (currentGameState === STATES.START) {
+                currentGameState = STATES.PLAYING
+            } else if (currentGameState === STATES.GAMEOVER)
+                score = 0
+                game.over = false
+                player.position = {
+                    x: (canvas.width - this.width)/2,
+                    y: canvas.height - this.height - 20
+                }
+                player.velocity = {x: 0, y: 0}
+                player.rotation = 0
+                player.opacity = 1
+                projectiles = 0
+                grids = 0
+                invaderProjectiles = 0
+                currentGameState = STATES.START
     }
 })
 
