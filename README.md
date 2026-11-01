@@ -6,7 +6,16 @@ I made this game for Week 2 of Terra. I was inspired by the theme word "antique"
 
 Anyways, this game was made mainly through JS and canvas on HTML, leading to a very fun time figuring out how HTML and JS can be used for things besides websites! Because of my skill level (i don't think my expertise counts as skills but oh well), I had to use a tutorial (linked below) to help me make this game.
 
-**AI Declaration**
+To play the game, simply go to https://pokeglitched.github.io/ShipInvaders/
+
+**Controls** <br>
+AD or Arrow Keys to Move
+Space to Shoot
+Enter to Start and Restart Game
+Kill all the invaders!
+Watch out for enemy fire!
+
+**AI Declaration** <br>
 News Flash: I am just learning how to code. As such, I used AI for two main purposes, but I never blindly copy-pasted its code. I used it first and foremost as a debugger, because lots of the time I would miss something in a tutorial, or wanted to add a special feature, but it would keep breaking. In addition, when I wanted to implement something I had no idea how to do, I used AI to learn about the methods and ways to create it!
 
 **VERSION 1 / First Ship**
@@ -14,11 +23,12 @@ News Flash: I am just learning how to code. As such, I used AI for two main purp
 - No restart button
 - Game stops upon death, need to reload page to retry
 
+**V1.1**
+- Added actual UI (game over and begin screen)
+
 Version 2 additions (coming soon!)
-- Actual UI (game over, begin, etc.)
 - Music and or sfx
 - Retheme game to the Odyessy (might be version 3)
-
 
 Tutorial used for this project (gave code, help, and all assets for 1.0):
 Space Invaders Game Tutorial with JavaScript and HTML Canvas by Chris Courses
