@@ -310,6 +310,25 @@ function drawStartScreen() {
     c.fillStyle = "white"
     c.font = "20px sans-serif, monospace"
     c.fillText("Hit enter to Start Game", canvas.width/2, canvas.height/2 + 40)
+}
+
+function drawGameOver() {
+    c.fillStyle = "#0F172AD9"
+    c.fillRect(0, 0, canvas.width, canvas.height)
+
+    c.fillStyle = "yellow"
+    c.font = "bold 48px sans-serif, monospace"
+    c.textAlign = "center"
+    c.textBaseline = "middle"
+    c.fillText("GAME OVER!", canvas.width/2, canvas.height/2 - 40)
+
+    c.fillStyle = "white"
+    c.font = "20px sans-serif, monospace"
+    c.fillText(`Final Score: ${score}`, canvas.width/2, canvas.height/2 + 40)
+
+    c.fillStyle = "white"
+    c.font = "20px sans-serif, monospace"
+    c.fillText("Hit enter to Restart Game", canvas.width/2, canvas.height/2 + 40)
 
 }
 
