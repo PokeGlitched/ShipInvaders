@@ -196,12 +196,13 @@ class Grid{
 }
 
 class Particle{
-    constructor({position, velocity, radius, color}){
+    constructor({position, velocity, radius, color, fades}){
         this.position = position
         this.velocity = velocity 
         this.radius = radius
         this.color = color
         this.opacity = 1
+        this.fades = fades
     }
     
     draw() {
@@ -220,7 +221,8 @@ class Particle{
         this.draw()
         this.position.x += this.velocity.x
         this.position.y += this.velocity.y
-        this.opacity += -0.01
+        if (this.fades)
+            this.opacity += -0.01
     }
 }
 
@@ -259,7 +261,9 @@ for (let i = 0; i < 100; i++){
                 y: 1
                 },
                 radius: Math.random() * 2,
-                color: 'white'}))}
+                color: 'white',
+                fades: false
+                }))}
 
 
 function createparticles({object, color}){
@@ -274,8 +278,11 @@ function createparticles({object, color}){
                 y: (Math.random() - 0.5) * 2
                 },
                 radius: Math.random() * 3,
-                color: color || "#baa0de"}))                
-                }
+                color: color || "#baa0de",
+                fades: true
+            }))                
+            }
+                
 }
 
 function animate(){
