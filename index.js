@@ -327,7 +327,7 @@ function drawStartScreen() {
 
     c.fillStyle = "white"
     c.font = "20px sans-serif, monospace"
-    c.fillText("Hit enter to Start Game", canvas.width/2, canvas.height/2 + 40)
+    c.fillText("Hit enter to Start Game. Click on the screen to turn on background music!", canvas.width/2, canvas.height/2 + 40)
     c.fillText("AD or Arrows to move horizontally; Space to shoot!", canvas.width/2, canvas.height/2 + 60)
 }
 
@@ -378,7 +378,7 @@ function animate(){
         drawStartScreen()
         return
     }
-    
+
     if (currentGameState === STATES.GAMEOVER) {
         drawGameOver()
         return
@@ -524,6 +524,15 @@ function animate(){
 if (player.image && player.image.onload) {player.image.onload();} {
     animate()
 }
+
+const backgroundMusic = new Audio('assets/audio/backgroundMusic.wav');
+backgroundMusic.loop = true;
+backgroundMusic.volume = 0.05; 
+window.addEventListener('click', () => {
+    backgroundMusic.play().catch(error => {
+        console.log("Audio playback failed:", error);
+    });
+}, { once: true });
 
 addEventListener('keydown', ({key}) => {
     if (game.over & key !== "Enter") return
