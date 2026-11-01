@@ -324,11 +324,11 @@ function drawGameOver() {
 
     c.fillStyle = "white"
     c.font = "20px sans-serif, monospace"
-    c.fillText(`Final Score: ${score}`, canvas.width/2, canvas.height/2 + 40)
+    c.fillText(`Final Score: ${score}`, canvas.width/2, canvas.height/2 + 20)
 
     c.fillStyle = "white"
     c.font = "20px sans-serif, monospace"
-    c.fillText("Hit enter to Restart Game", canvas.width/2, canvas.height/2 + 40)
+    c.fillText("Hit enter to Restart Game", canvas.width/2, canvas.height/2 + 80)
 
 }
 
@@ -356,7 +356,7 @@ function animate(){
     requestAnimationFrame(animate)
 
     if (!game.active && currentGameState !== STATES.GAMEOVER) return
-    
+
     if (currentGameState === STATES.START) {
         drawStartScreen();
         return;
