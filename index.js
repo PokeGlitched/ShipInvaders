@@ -230,6 +230,12 @@ class Particle{
         this.color = color
         this.opacity = 1
         this.fades = fades
+
+        if (!this.fades){
+            this.waveAngle = Math.random() * Math.PI * 2
+            this.waveSpeed = 0.01 + Math.random() * 0.015
+            this.waveAmplitude = 0.8 + Math.random() * 1.2
+        }
     }
     
     draw() {
@@ -246,6 +252,12 @@ class Particle{
 
     update() {
         this.draw()
+        
+        if (!this.fades) {
+            this.waveAngle += this.waveSpeed
+            this.position.x += Math.cos(this.waveAngle) * this.waveAmplitude
+        }
+
         this.position.x += this.velocity.x
         this.position.y += this.velocity.y
         if (this.fades)
@@ -304,7 +316,7 @@ for (let i = 0; i < 250; i++){
                 }))}
 
 function drawStartScreen() {
-    c.fillStyle = "#b7d0d0"
+    c.fillStyle = "#006985"
     c.fillRect(0, 0, canvas.width, canvas.height)
 
     c.fillStyle = "#ff8181"
@@ -320,7 +332,7 @@ function drawStartScreen() {
 }
 
 function drawGameOver() {
-    c.fillStyle = "#b7d0d0"
+    c.fillStyle = "#006985"
     c.fillRect(0, 0, canvas.width, canvas.height)
 
     c.fillStyle = "#ff8181"
@@ -374,7 +386,7 @@ function animate(){
 
     if (!game.active) return
 
-    c.fillStyle = '#b7d0d0'
+    c.fillStyle = '#006985'
     c.fillRect(0, 0, canvas.width, canvas.height)
     player.update()
     particles.forEach((particle, i) => {
