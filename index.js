@@ -191,8 +191,8 @@ class Grid{
     
         this.invaders = []
 
-        const rows = Math.floor(Math.random() * 5 + 2) 
-        const columns = Math.floor(Math.random() * 10 + 5)
+        const rows = Math.floor(Math.random() * 4 + 1) 
+        const columns = Math.floor(Math.random() * 4 + 1)
 
         this.width = columns * 30
 
