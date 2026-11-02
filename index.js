@@ -147,9 +147,9 @@ class Invader{
         const image = new Image()
         //octopus image
         image.src = 'assets/images/invader.png'
-
         image.onload = () => {
-            const resizescale = 1
+            // you can set octopus image size to whatever you want, 1.25 works best for me
+            const resizescale = 1.25
             this.image = image
             this.width = image.width * resizescale
             this.height = image.height * resizescale
