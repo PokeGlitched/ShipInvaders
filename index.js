@@ -298,7 +298,10 @@ let game = {
     active: true
 }
 let score = 0
-let pr = localStorage.getItem('pr') || 0
+let pr = Number(localStorage.getItem('pr')) || 0
+
+const prEL = document.querySelector('#prEL')
+prEL.textContent = pr
 // console.log(randomInt)
 
 for (let i = 0; i < 250; i++){
@@ -345,6 +348,10 @@ function drawGameOver() {
     c.fillStyle = "white"
     c.font = "20px sans-serif, monospace"
     c.fillText(`Final Score: ${score}`, canvas.width/2, canvas.height/2 + 20)
+
+    c.fillStyle = "white"
+    c.font = "20px sans-serif"
+    c.fillText(`High Score: ${pr}`, canvas.width / 2, canvas.height / 2 + 50)
 
     c.fillStyle = "white"
     c.font = "20px sans-serif, monospace"
@@ -473,6 +480,12 @@ function animate(){
                 score += 100
                 console.log(score)
                 scoreEL.innerHTML = score
+                if (score > Number(pr)) {
+                pr = score
+                localStorage.setItem('pr', pr)
+                prEL.innerHTML = pr
+                }
+
                 createparticles(
                     {object: invader}
                 )
@@ -578,10 +591,6 @@ addEventListener('keydown', ({key}) => {
             if (currentGameState === STATES.START) {
                 currentGameState = STATES.PLAYING
             } else if (currentGameState === STATES.GAMEOVER) {
-                if (score > pr){
-                    pr = score;
-                    localStorage.setItem("pr", pr)
-                }
                 score = 0
                 waveCount = 1
                 scoreEL.innerHTML = score

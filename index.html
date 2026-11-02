@@ -18,6 +18,16 @@
         display: block;
     }
 
+    #pr {
+        position: absolute;
+        top: 10px;
+        left: 15px;
+        margin: 0;
+        color: white;
+        font-family: sans-serif;
+        font-size: 14px;
+    }
+
     #score {
         position: absolute;
         top: 10px;
@@ -30,6 +40,7 @@
 </style>
 
 <div id="game">
+    <p id="pr">High Score: <span id="prEL">0</span></p>
     <p id="score">Score: <span id="scoreEL">0</span></p>
     <canvas></canvas>
 </div>
