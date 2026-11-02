@@ -298,7 +298,7 @@ let game = {
     active: true
 }
 let score = 0
-let pr = localStorage.getItem('highscore') || 0
+let pr = localStorage.getItem('pr') || 0
 // console.log(randomInt)
 
 for (let i = 0; i < 250; i++){
@@ -578,6 +578,10 @@ addEventListener('keydown', ({key}) => {
             if (currentGameState === STATES.START) {
                 currentGameState = STATES.PLAYING
             } else if (currentGameState === STATES.GAMEOVER) {
+                if (score > pr){
+                    pr = score;
+                    localStorage.setItem("pr", pr)
+                }
                 score = 0
                 waveCount = 1
                 scoreEL.innerHTML = score
