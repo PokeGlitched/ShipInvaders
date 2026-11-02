@@ -298,7 +298,7 @@ let game = {
     active: true
 }
 let score = 0
-
+let pr = localStorage.getItem('highscore') || 0
 // console.log(randomInt)
 
 for (let i = 0; i < 250; i++){
