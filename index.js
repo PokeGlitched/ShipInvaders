@@ -423,29 +423,33 @@ function createparticles({object, color}){
             }
                 
 }
-
+// massive animated function
 function animate(){
     requestAnimationFrame(animate)
-
+    //no animation happens on start screen...
     if (currentGameState === STATES.START) {
         drawStartScreen()
         return
     }
-
+    // or end screen
     if (currentGameState === STATES.GAMEOVER) {
         drawGameOver()
         return
     }
-
+    // secondary safety check, if game is not sposed to run, dont animated anything
     if (!game.active) return
-
+    // everyscreen has the same bg color
     c.fillStyle = '#006985'
+    //fill whole bg with this color
     c.fillRect(0, 0, canvas.width, canvas.height)
+    //player updates every frames
     player.update()
+    //boosts are here - visual indicator in top left corner
     for (let i = 0; i < 5; i++) {
         c.fillStyle = i < boosts ? '#00ff00' : '#274529'
         c.fillRect(10 + (i * 15), 25, 10, 10)
     }
+    //particle spawner, specifically for explosions
     particles.forEach((particle, i) => {
         
         if (particle.position.y - particle.radius >= canvas.height) {
@@ -461,8 +465,9 @@ function animate(){
         }
     })
 
-    // console.log(particles)
+    // console.log(particles) - unless you have to, DO NOT UN COMMENT THIS, IT WILL PROLLY CRASH THE TAB 
     
+    //invader projectile collision
     invaderProjectiles.forEach((iprojectile, jindex)=> {
         if (iprojectile.position.y >= canvas.height) {
     invaderProjectiles.splice(jindex, 1)
@@ -474,26 +479,32 @@ function animate(){
                 iprojectile.position.x + iprojectile.radius >= player.position.x &&
                 iprojectile.position.x - iprojectile.radius <= player.position.x + player.width &&
                 iprojectile.position.y + iprojectile.radius >= player.position.y){
+        // oh no you lose!!
         console.log("youlose")
+        // create explosions for player
         createparticles({
         object: player,
         color: '#9E7665'
         })
+        //dispose of evidence
         setTimeout(() => {
             invaderProjectiles.splice(jindex, 1)
             player.opacity = 0
             game.over = true
 
         }, 0) 
+        // end enemies 1 sec afterwards to give game time to breathe
         setTimeout(() => {
             game.active = false
             currentGameState = STATES.GAMEOVER
-        }, 2000) 
+        }, 1000) 
         }
     });
+    //time to fight back - player projectiles go here
     projectiles.forEach((projectile, index)=> {
         if (projectile.position.y + projectile.radius <= 0) {
-           setTimeout(() => {
+           //oops i meant they get deleted
+            setTimeout(() => {
             projectiles.splice(index, 1)
         }, 0)
         } else {
@@ -501,15 +512,15 @@ function animate(){
         }
     });
 
-
+    //grids shoot here
     grids.forEach((grid, gridIndex) => {
     grid.update()
-
+    // random enemy will shoot each time
     if (frames % 100 === 0 && grid.invaders.length > 0){
         grid.invaders[Math.floor(Math.random() * grid.invaders.length)].shoot(invaderProjectiles)
     }
 
- 
+    // projectiles hit enemies and kill them
     for (let i = grid.invaders.length - 1; i >= 0; i--) {
         const invader = grid.invaders[i]
 
@@ -526,22 +537,27 @@ function animate(){
                 projectile.position.x - projectile.radius <= invader.position.x + invader.width &&
                 projectile.position.y + projectile.radius >= invader.position.y
             ) {
+                // +100 score everytime enemies die
                 score += 100
+                //put score in console
                 console.log(score)
+                //update score in HTML
                 scoreEL.innerHTML = score
+                //upd highscore if u beat it
                 if (score > Number(pr)) {
                 pr = score
                 localStorage.setItem('pr', pr)
                 prEL.innerHTML = pr
                 }
-
+                //explode invader
                 createparticles(
                     {object: invader}
                 )
-
+                //get rid of enemy u killed
                 grid.invaders.splice(i, 1)
+                //get rid of projectile that killed the enemy
                 projectiles.splice(j, 1)
-
+                //recalculate grid size if all enemies get killed
                 if (grid.invaders.length > 0) {
                     const firstInvader = grid.invaders[0]
                     const lastInvader = grid.invaders[grid.invaders.length - 1]
@@ -550,7 +566,9 @@ function animate(){
                     grid.position.x = firstInvader.position.x
                 }
                 else {
+                //get rid of grid if it is gone
                     grids.splice(gridIndex, 1)
+                    //increase wave for dynamic speed
                     waveCount++
                 }
                 break
@@ -558,30 +576,40 @@ function animate(){
         }
     }
 })
-
+    //more vars!
+    //boost var
     const isSprinting = keys.shift && keys.shift.pressed && boosts > 0
+    //player speedm multiplied if your boosting
     const speed = isSprinting ? 15 : 5;
+    //rotate the player, change the value if you want a harsher-looking turn
     const rotationamt = 0.15
+    //wont turn if you are on the edge (also moving handled  cuz here i set up world borders)
+    //one way for left (neg)
     if (keys.a.pressed && player.position.x >= 0) {
         player.velocity.x = -speed
         player.rotation = -rotationamt
     }
+    //other way for right (pos)
     else if (keys.d.pressed && player.position.x + player.width <= canvas.width) {
         player.velocity.x = speed
         player.rotation = rotationamt
     }
+    // you don't move (obvi())
     else {
         player.velocity.x = 0
         player.rotation = 0
     }
     // console.log(frames)
+    //remeber randomInt? if when frames hits that number, new enemies spawn
     if (frames % randomInt === 0){
         grids.push(new Grid())
+        // new randomInt gotten
         randomInt = (Math.floor(Math.random() * 500) + 500)
+        //frames reset here
         frames = 0
         // console.log(randomInt)
     }
-    
+    //add new frame
     frames++
 }
 
