@@ -150,18 +150,19 @@ class Invader{
         image.onload = () => {
             // you can set octopus image size to whatever you want, 1.25 works best for me
             const resizescale = 1.25
+            //dont change this stuff, will prolly mess it up
             this.image = image
             this.width = image.width * resizescale
             this.height = image.height * resizescale
             this.position = {
-                    x: position.x,
+                    x: position.x + 5,
                     y: position.y
             }
         }
     }
     draw() {
-            //c.fillStyle = 'red'
-         //c.fillRect(this.position.x, this.position.y, this.width, this.height)
+        //c.fillStyle = 'red' - use this for debugging
+        //c.fillRect(this.position.x, this.position.y, this.width, this.height)
         if (!this.image || !this.position) return;
             if (this.image && this.position) {
                 c.drawImage(this.image, this.position.x, this.position.y, this.width, this.height)
@@ -175,7 +176,7 @@ class Invader{
 
         }
     }
-
+    // invader shoots here
     shoot(invaderProjectiles){
         invaderProjectiles.push(new invaderProjectile({
             position: {
@@ -191,26 +192,27 @@ class Invader{
 
     }
 }
-
+// grid of invaders here
 class Grid{
     constructor() {
         this.position = {
             x: 0,
             y: 0
         }
-    
+        // dynamic speed here!!
         this.velocity = {
-            x: 3 + (waveCount - 1) / 2,
+            // 3 + (everything here makes it dynamic in a good way). change x in (something) / x to make it scale slower
+            x: 3 + ((waveCount - 1) / 2),
             y: 0
         } 
     
         this.invaders = []
-
+        //randomizes invader grid size
         const rows = Math.floor(Math.random() * 5 + 2) 
         const columns = Math.floor(Math.random() * 5 + 2)
-
+        //used ltr
         this.width = columns * 30
-
+    //for each but reskinned, populates the grid up
     for (let x = 0; x < columns; x++) {
         for (let y = 0; y < rows; y++) {
         this.invaders.push(new Invader({position: {
@@ -221,12 +223,12 @@ class Grid{
     }
         // console.log(this.invaders)
     }
-
+    //update grid, move inavders as a unit
     update() {
     this.position.x += this.velocity.x
     this.position.y += this.velocity.y
     this.velocity.y = 0
-
+    //flip @ world borders, move them down by one lil guy
     if (this.position.x + this.width >= canvas.width || this.position.x <= 0) {
         this.velocity.x = -this.velocity.x
         this.velocity.y = 30
@@ -234,23 +236,28 @@ class Grid{
 }
 
 }
-
+//particles, used for explosions and for bg particles
 class Particle{
     constructor({position, velocity, radius, color, fades}){
+        //pos of particles
         this.position = position
+        //particles move away from the exploded, down if it is the bg
         this.velocity = velocity 
+        // how big
         this.radius = radius
+        // how color (lol)
         this.color = color
+        // these two make it fade
         this.opacity = 1
         this.fades = fades
-
+        // only things that don't fade r bg particles, which go in wavy motion
         if (!this.fades){
             this.waveAngle = Math.random() * Math.PI * 2
             this.waveSpeed = 0.01 + Math.random() * 0.015
             this.waveAmplitude = 0.8 + Math.random() * 1.2
         }
     }
-    
+    // particles draw here
     draw() {
         c.save()
         c.globalAlpha = this.opacity
@@ -262,7 +269,7 @@ class Particle{
         c.restore()
 
     }
-
+    // upd here because they
     update() {
         this.draw()
         
@@ -273,16 +280,19 @@ class Particle{
 
         this.position.x += this.velocity.x
         this.position.y += this.velocity.y
+        // ones that fade do it here
         if (this.fades)
             this.opacity += -0.01
     }
 }
-
+// variable city - most consts and lets r here
+//these ones are just gonna be classes
 const player = new Player()
 const projectiles = []
 const grids = []
 const invaderProjectiles = []
 const particles = []
+//for inputs
 const keys = {
     a: {
         pressed: false
@@ -297,30 +307,42 @@ const keys = {
         pressed: false
     }
 }
+//game states
 const STATES = {
     START: "START",
     PLAYING: "PLAYING",
     GAMEOVER: "GAMEOVER"
 }
 
+//idk why i put it here but draws the player
 player.draw()
-
+//amount of speed boosts u can get
 let boosts = 5
+//wavecount 4 dynamic speed
 let waveCount = 1
+//puts u on start screen
 let currentGameState = STATES.START
+//frames 0, mainly 4 enemy calculations
 let frames = 0
+//used to determine how many frams until next set of enemies spawn
 let randomInt = (Math.floor(Math.random() * 500) + 500)
+//used to consolelog how many frames until next batch
+//console.log(randomInt)
+
+// self-explanatory, but over is for player, active is for enemies
 let game = {
     over: false,
     active: true
 }
+// reset score
 let score = 0
+//high score func here
 let pr = Number(localStorage.getItem('pr')) || 0
-
+//const for highscore
 const prEL = document.querySelector('#prEL')
 prEL.textContent = pr
-// console.log(randomInt)
 
+//bg particles are here
 for (let i = 0; i < 250; i++){
                 particles.push(new Particle(
                 {position: {
@@ -335,59 +357,65 @@ for (let i = 0; i < 250; i++){
                 color: 'white',
                 fades: false
                 }))}
-
+//landing page - should mention that you never come back here unless you reload the page
 function drawStartScreen() {
+    //every screen's background
     c.fillStyle = "#006985"
     c.fillRect(0, 0, canvas.width, canvas.height)
-
+    //title text
     c.fillStyle = "#ff8181"
     c.font = "bold 48px sans-serif, monospace"
     c.textAlign = "center"
     c.textBaseline = "middle"
     c.fillText("SHIP INVADERS", canvas.width/2, canvas.height/2 - 40)
-
+    //tells you controls
     c.fillStyle = "white"
     c.font = "20px sans-serif, monospace"
     c.fillText("Hit enter to Start Your Odyessy. Click on the screen to turn on background music!", canvas.width/2, canvas.height/2 + 40)
     c.fillText("AD or Arrows to steer the boat; Space to shoot cannonballs at monsters!; Shift to boost (you only have 5!)", canvas.width/2, canvas.height/2 + 60)
 }
-
+//game over screen
 function drawGameOver() {
+    //again, background of every screen
     c.fillStyle = "#006985"
     c.fillRect(0, 0, canvas.width, canvas.height)
-
+    //game over text, but i made it greek themed
     c.fillStyle = "#ff8181"
     c.font = "bold 48px sans-serif, monospace"
     c.textAlign = "center"
     c.textBaseline = "middle"
     c.fillText("LOST AT SEA!", canvas.width/2, canvas.height/2 - 40)
-
+    //dynamic score giver
     c.fillStyle = "white"
     c.font = "20px sans-serif, monospace"
     c.fillText(`Final Score: ${score}`, canvas.width/2, canvas.height/2 + 20)
-
+    //dynamic HIGH score giver
     c.fillStyle = "white"
     c.font = "20px sans-serif"
     c.fillText(`High Score: ${pr}`, canvas.width / 2, canvas.height / 2 + 50)
-
+    //joke because odyesseus got saved by athena like every 5 seconds in the real odyessy
     c.fillStyle = "white"
     c.font = "20px sans-serif, monospace"
     c.fillText("Hit enter for Athena to let you try again!", canvas.width/2, canvas.height/2 + 80)
 
 }
 
-
+//create particles func, used for explosions mainly
 function createparticles({object, color}){
+    //15 particles for explosions
     for (let i = 0; i < 15; i++){
                 particles.push(new Particle({
+                //start off in the center
                 position: {
                 x: object.position.x + object.width / 2,
                 y: object.position.y + object.height/ 2
                 },
+                //go in random directions
                 velocity:{
                 x: (Math.random() - 0.5) * 2,
                 y: (Math.random() - 0.5) * 2
                 },
+                // i think the radius changes randomly, so each explosion looks different
                 radius: Math.random() * 3,
                 color: color || "#ff8181",
                 fades: true
