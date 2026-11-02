@@ -33,9 +33,9 @@ News Flash: I am just learning how to code! As such, I used AI for two main purp
 
 **V2.1**
 - Has dynamic wave speed that gets faster the more enemies you kill
-- all code has been commented so people (me) can fully understand it
+- All code has been commented so people (me) can fully understand it (developer end change, not front end)
 - Added PR (personal record) function that saves to your browser for a new challenge every game!
-- Made Text Odyessy themed!
+- Made text Odyessy-themed!
 
 **Version 3 (Potentially released)**
 - Will have powerups like a minigun, bomb, etc.
