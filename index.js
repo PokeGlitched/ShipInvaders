@@ -279,6 +279,9 @@ const keys = {
     },
     space: {
         pressed: false
+    },
+    shift: {
+        pressed: false
     }
 }
 const STATES = {
@@ -511,7 +514,7 @@ function animate(){
 })
 
 
-    const speed = 7;
+    const speed = keys.shift && keys.shift.pressed ? 15 : 5;
     const rotationamt = 0.15
     if (keys.a.pressed && player.position.x >= 0) {
         player.velocity.x = -speed
@@ -553,6 +556,9 @@ addEventListener('keydown', ({key}) => {
     if (game.over & key !== "Enter") return
 
     switch (key) {
+        case 'Shift':
+            keys.shift.pressed = true
+            break
         case 'a':
         case 'A':
         case 'ArrowLeft':
@@ -624,6 +630,9 @@ addEventListener('keydown', ({key}) => {
 
 addEventListener('keyup', ({key}) => {
     switch (key) {
+        case 'Shift':
+            keys.shift.pressed = false
+            break
         case 'a':
         case 'A':
         case 'ArrowLeft':
