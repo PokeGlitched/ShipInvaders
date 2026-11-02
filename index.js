@@ -331,12 +331,12 @@ function drawStartScreen() {
     c.font = "bold 48px sans-serif, monospace"
     c.textAlign = "center"
     c.textBaseline = "middle"
-    c.fillText("SPACE INVADERS", canvas.width/2, canvas.height/2 - 40)
+    c.fillText("SHIP INVADERS", canvas.width/2, canvas.height/2 - 40)
 
     c.fillStyle = "white"
     c.font = "20px sans-serif, monospace"
-    c.fillText("Hit enter to Start Game. Click on the screen to turn on background music!", canvas.width/2, canvas.height/2 + 40)
-    c.fillText("AD or Arrows to move horizontally; Space to shoot; Shift to boost (you only have 5!)", canvas.width/2, canvas.height/2 + 60)
+    c.fillText("Hit enter to Start Your Odyessy. Click on the screen to turn on background music!", canvas.width/2, canvas.height/2 + 40)
+    c.fillText("AD or Arrows to steer the boat; Space to shoot cannonballs at monsters!; Shift to boost (you only have 5!)", canvas.width/2, canvas.height/2 + 60)
 }
 
 function drawGameOver() {
@@ -347,7 +347,7 @@ function drawGameOver() {
     c.font = "bold 48px sans-serif, monospace"
     c.textAlign = "center"
     c.textBaseline = "middle"
-    c.fillText("GAME OVER!", canvas.width/2, canvas.height/2 - 40)
+    c.fillText("LOST AT SEA!", canvas.width/2, canvas.height/2 - 40)
 
     c.fillStyle = "white"
     c.font = "20px sans-serif, monospace"
@@ -359,7 +359,7 @@ function drawGameOver() {
 
     c.fillStyle = "white"
     c.font = "20px sans-serif, monospace"
-    c.fillText("Hit enter to Restart Game", canvas.width/2, canvas.height/2 + 80)
+    c.fillText("Hit enter for Athena to let you try again!", canvas.width/2, canvas.height/2 + 80)
 
 }
 
