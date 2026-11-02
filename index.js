@@ -1,9 +1,12 @@
+
+//set up canvas
 const canvas = document.querySelector('canvas')
 const c = canvas.getContext('2d')
 
 canvas.width = 1024
 canvas.height = 576
 
+//auto resizer
 function resizeCanvas() {
     const scale = Math.min(
         window.innerWidth / 1024,
@@ -24,51 +27,55 @@ function resizeCanvas() {
 resizeCanvas()
 window.addEventListener('resize', resizeCanvas)
 
+//player class
 class Player{
     constructor(){
         
-
+        //playervelo
         this.velocity = {
             x: 0,
             y: 0
         }
-
+        
+        //player rendering settings
         this.rotation = 0
         this.opacity = 1
         const image = new Image()
         image.src = 'assets/images/spaceship.png'
-
         image.onload = () => {
             const resizescale = 0.15
-
+            // set player size
             this.image = image
             this.width = image.width * resizescale
             this.height = image.height * resizescale
-
+            // pos of player
             this.position = {
                 x: (canvas.width - this.width) / 2,
                 y: canvas.height - this.height - 20
             }
-
+            // make sure player starts with nothing
             this.velocity = { x: 0, y: 0 }
 }
     }
+    //draws actual player
     draw() {
-            //c.fillStyle = 'red'
-         //c.fillRect(this.position.x, this.position.y, this.width, this.height)
+        //c.fillStyle = 'red' - if u ever need to get rid of player for some reason, comment out the other code and uncomment this
+        //c.fillRect(this.position.x, this.position.y, this.width, this.height)
+        //makes sure code can load properly
         if (!this.image || !this.position) return;
             c.save()
             c.globalAlpha = this.opacity
             c.translate(this.position.x + this.width/2, this.position.y + player.height/2)
             c.rotate(this.rotation)
             c.translate(-this.position.x -this.width/2, - this.position.y - player.height/2)
-
+        //actual draw function
             if (this.image && this.position) {
                 c.drawImage(this.image, this.position.x, this.position.y, this.width, this.height)
             }    
 
             c.restore()
     }
+    //actual animation here - will upd player every frame
     update() {
         this.draw()
         if(this.position) {
@@ -76,63 +83,69 @@ class Player{
         }
     }
 }
-
+// player bullet class
 class Projectile{
     constructor({position, velocity}){
+        //sets stuff up 4 ltr i think
         this.position = position
         this.velocity = velocity 
-
+        //bullet size - u can change to whatever below like 6
         this.radius = 4
     }
-    
+    // draw bullet
     draw() {
         c.beginPath()    
         c.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2)
+        //made bullet a cannonball color
         c.fillStyle = '#323637'
         c.fill()
         c.closePath()
     }
 
     update() {
+    //bullet animates here
         this.draw()
         this.position.x += this.velocity.x
         this.position.y += this.velocity.y
     }
 }
-
+// enemy rocks
 class invaderProjectile{
     constructor({position, velocity}){
+        //sets stuff up 4 ltr
         this.position = position
         this.velocity = velocity 
-
+        //makes bullet size - wouldn't recommend changing it for game-balance
         this.radius = 4
     }
     
     draw() {
         c.beginPath()    
         c.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2)
+        // potentially change this if u want to fork or make it your own - i personally like the color, but some ppl dont
+        // kind of a rock color, sposed to be them chucking massive boulder at u
         c.fillStyle = '#847B77'
         c.fill()
         c.closePath()
     }
-
+    // animates bullet
     update() {
         this.draw()
         this.position.x += this.velocity.x
         this.position.y += this.velocity.y
     }
 }
-
-
+// enemy octopus
 class Invader{
     constructor({position}){
-
+        //invaders dont move individually, they move as a group
         this.velocity = {
             x: 0,
             y: 0
         }
 
         const image = new Image()
+        //octopus image
         image.src = 'assets/images/invader.png'
 
         image.onload = () => {
