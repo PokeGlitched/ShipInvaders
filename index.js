@@ -292,6 +292,7 @@ const STATES = {
 
 player.draw()
 
+let boosts = 5
 let waveCount = 1
 let currentGameState = STATES.START
 let frames = 0
@@ -335,7 +336,7 @@ function drawStartScreen() {
     c.fillStyle = "white"
     c.font = "20px sans-serif, monospace"
     c.fillText("Hit enter to Start Game. Click on the screen to turn on background music!", canvas.width/2, canvas.height/2 + 40)
-    c.fillText("AD or Arrows to move horizontally; Space to shoot!", canvas.width/2, canvas.height/2 + 60)
+    c.fillText("AD or Arrows to move horizontally; Space to shoot; Shift to boost (you only have 5!)", canvas.width/2, canvas.height/2 + 60)
 }
 
 function drawGameOver() {
@@ -400,6 +401,10 @@ function animate(){
     c.fillStyle = '#006985'
     c.fillRect(0, 0, canvas.width, canvas.height)
     player.update()
+    for (let i = 0; i < 5; i++) {
+        c.fillStyle = i < boosts ? '#00ff00' : '#274529'
+        c.fillRect(10 + (i * 15), 25, 10, 10)
+    }
     particles.forEach((particle, i) => {
         
         if (particle.position.y - particle.radius >= canvas.height) {
@@ -513,8 +518,8 @@ function animate(){
     }
 })
 
-
-    const speed = keys.shift && keys.shift.pressed ? 15 : 5;
+    const isSprinting = keys.shift && keys.shift.pressed && boosts > 0
+    const speed = isSprinting ? 15 : 5;
     const rotationamt = 0.15
     if (keys.a.pressed && player.position.x >= 0) {
         player.velocity.x = -speed
@@ -557,6 +562,9 @@ addEventListener('keydown', ({key}) => {
 
     switch (key) {
         case 'Shift':
+            if (!keys.shift.pressed && boosts > 0) {
+                boosts--
+            }
             keys.shift.pressed = true
             break
         case 'a':
@@ -599,6 +607,7 @@ addEventListener('keydown', ({key}) => {
             } else if (currentGameState === STATES.GAMEOVER) {
                 score = 0
                 waveCount = 1
+                boosts = 5
                 scoreEL.innerHTML = score
                 game.over = false
                 game.active = true
