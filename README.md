@@ -48,15 +48,15 @@ Tutorial for octopus/monster pixel art help:
 https://www.youtube.com/watch?v=C0TgcZT7mj0
 
 Screenies from V1.1! (I had to learn to how screenshot **so** quick for some of these)
-![Start Screen](<assets/screenshotsforreadme/Screenshot 2026-11-01 155942.png>)
-![Enemies on Screen](<assets/screenshotsforreadme/Screenshot 2026-11-01 155534.png>)
-![Enemies on Screen](<assets/screenshotsforreadme/Screenshot 2026-11-01 010650.png>)
+![Start Screen](<assets/screenshotsforreadme/v1.1/Screenshot 2026-11-01 155942.png>)
+![Enemies on Screen](<assets/screenshotsforreadme/v1.1/Screenshot 2026-11-01 155534.png>)
+![Enemies on Screen](<assets/screenshotsforreadme/v1.1/Screenshot 2026-11-01 010650.png>)
 ![Empty Background, after killing all the enemies](<assets/screenshotsforreadme/Screenshot 2026-11-01 155338.png>) 
-![Game Over! Good try!](<assets/screenshotsforreadme/Screenshot 2026-11-01 155359.png>)
+![Game Over! Good try!](<assets/screenshotsforreadme/v1.1/Screenshot 2026-11-01 155359.png>)
 
 Screenies from V2.1!
-![Start Screen](<assets/screenshotsforreadme/2.1/Screenshot 2026-11-01 230434.png>)
-![Enemies on Screen](<assets/screenshotsforreadme/2.1/Screenshot 2026-11-01 230444.png>)
-![Enemies on Screen](<assets/screenshotsforreadme/2.1/Screenshot 2026-11-01 230823.png>)
-![Empty Background, after killing all the enemies](<assets/screenshotsforreadme/2.1/Screenshot 2026-11-01 230950.png>)
-![Game Over! Good try!](<assets/screenshotsforreadme/2.1/Screenshot 2026-11-01 230508.png>)
+![Start Screen](<assets/screenshotsforreadme/v2.1/Screenshot 2026-11-01 230434.png>)
+![Enemies on Screen](<assets/screenshotsforreadme/v2.1/Screenshot 2026-11-01 230444.png>)
+![Enemies on Screen](<assets/screenshotsforreadme/v2.1/Screenshot 2026-11-01 230823.png>)
+![Empty Background, after killing all the enemies](<assets/screenshotsforreadme/v2.1/Screenshot 2026-11-01 230950.png>)
+![Game Over! Good try!](<assets/screenshotsforreadme/v2.1/Screenshot 2026-11-01 230508.png>)
