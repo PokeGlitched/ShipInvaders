@@ -187,7 +187,7 @@ class Grid{
         }
     
         this.velocity = {
-            x: 3,
+            x: 3 + (waveCount - 1) / 2,
             y: 0
         } 
     
@@ -289,6 +289,7 @@ const STATES = {
 
 player.draw()
 
+let waveCount = 1
 let currentGameState = STATES.START
 let frames = 0
 let randomInt = (Math.floor(Math.random() * 500) + 500)
@@ -488,6 +489,7 @@ function animate(){
                 }
                 else {
                     grids.splice(gridIndex, 1)
+                    waveCount++
                 }
                 break
             }
@@ -555,7 +557,8 @@ addEventListener('keydown', ({key}) => {
         case ' ':
         case 'Space':
             // console.log('shoot')
-        if (!keys.space.pressed) {
+        if (!keys.space.pressed) 
+        {
             keys.space.pressed = true
 
             projectiles.push(new Projectile({
@@ -576,6 +579,7 @@ addEventListener('keydown', ({key}) => {
                 currentGameState = STATES.PLAYING
             } else if (currentGameState === STATES.GAMEOVER) {
                 score = 0
+                waveCount = 1
                 scoreEL.innerHTML = score
                 game.over = false
                 game.active = true
