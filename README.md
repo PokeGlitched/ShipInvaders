@@ -30,11 +30,15 @@ News Flash: I am just learning how to code. As such, I used AI for two main purp
 - Background Music
 - Rethemed game to the Odyessy
 
+**V2.1**
+- Has dynamic wave speed
+- all code has been commented so people (me) can fully understand it
+- Added PR function
+- Made Text Odyessy themed
+
 **Version 3 (Potentially released)**
 - Will have powerups
 - Will have a final boss
-- Will have dynamic wave scaling
-- Will have best score saved locally
 
 Tutorial used for this project (gave code, help, and all assets for 1.0):
 Space Invaders Game Tutorial with JavaScript and HTML Canvas by Chris Courses
@@ -49,3 +53,6 @@ Screenies from V1.1! (I had to learn to how screenshot **so** quick for some of 
 ![Enemies on Screen](<assets/screenshotsforreadme/Screenshot 2026-11-01 010650.png>)
 ![Empty Background, after killing all the enemies](<assets/screenshotsforreadme/Screenshot 2026-11-01 155338.png>) 
 ![Game Over! Good try!](<assets/screenshotsforreadme/Screenshot 2026-11-01 155359.png>)
+
+Screenies from V2.1!
+
