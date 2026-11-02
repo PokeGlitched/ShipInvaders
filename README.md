@@ -55,4 +55,8 @@ Screenies from V1.1! (I had to learn to how screenshot **so** quick for some of 
 ![Game Over! Good try!](<assets/screenshotsforreadme/Screenshot 2026-11-01 155359.png>)
 
 Screenies from V2.1!
-
+![Start Screen](<assets/screenshotsforreadme/2.1/Screenshot 2026-11-01 230434.png>)
+![Enemies on Screen](<assets/screenshotsforreadme/2.1/Screenshot 2026-11-01 230444.png>)
+![Enemies on Screen](<assets/screenshotsforreadme/2.1/Screenshot 2026-11-01 230823.png>)
+![Empty Background, after killing all the enemies](<assets/screenshotsforreadme/2.1/Screenshot 2026-11-01 230950.png>)
+![Game Over! Good try!](<assets/screenshotsforreadme/2.1/Screenshot 2026-11-01 230508.png>)
