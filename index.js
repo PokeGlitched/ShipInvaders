@@ -612,11 +612,11 @@ function animate(){
     //add new frame
     frames++
 }
-
+//calls animated func when everything is loaded
 if (player.image && player.image.onload) {player.image.onload();} {
     animate()
 }
-
+//bgmusic here
 const backgroundMusic = new Audio('assets/audio/backgroundMusic.wav');
 backgroundMusic.loop = true;
 backgroundMusic.volume = 0.05; 
@@ -625,17 +625,19 @@ window.addEventListener('click', () => {
         console.log("Audio playback failed:", error);
     });
 }, { once: true });
-
+//checks for keys pressed (or down) here
 addEventListener('keydown', ({key}) => {
     if (game.over & key !== "Enter") return
-
+    //switch and case to identify which key is pressed
     switch (key) {
+        //shift is for boost
         case 'Shift':
             if (!keys.shift.pressed && boosts > 0) {
                 boosts--
             }
             keys.shift.pressed = true
             break
+        //go left; a for regular, A if capslock, arrowleft is modern left arrow key, while left is for older comps jic. like this for d as well
         case 'a':
         case 'A':
         case 'ArrowLeft':
@@ -643,6 +645,7 @@ addEventListener('keydown', ({key}) => {
             // console.log('left')
             keys.a.pressed = true
             break
+        //go right
         case 'd':
         case 'D':
         case 'ArrowRight':
@@ -650,18 +653,21 @@ addEventListener('keydown', ({key}) => {
             // console.log('right')
             keys.d.pressed = true
             break
+        // oh shoot. what are you waiting for!?!
         case ' ':
         case 'Space':
             // console.log('shoot')
+        // makes sure you cant just hold the button to cheese the game
         if (!keys.space.pressed) 
         {
             keys.space.pressed = true
-
+            //make new bullet here
             projectiles.push(new Projectile({
             position: {
                 x: player.position.x + player.width / 2,
                 y: player.position.y
             },
+            //move it down here
             velocity: {
                 x: 0,
                 y: -5
@@ -670,24 +676,39 @@ addEventListener('keydown', ({key}) => {
         }
         // console.log([projectiles])
         break
+        //start and restart code here
         case 'Enter':
+            //if your are on start screen
             if (currentGameState === STATES.START) {
+                // go to playing screen (actual game)
                 currentGameState = STATES.PLAYING
-            } else if (currentGameState === STATES.GAMEOVER) {
+            } 
+            // if you are on lose screen
+            else if (currentGameState === STATES.GAMEOVER) {
+                //reset everything here
+                //reset only current score
                 score = 0
+                //reset waveCount so u don't instantly get speed
                 waveCount = 1
+                //reset amt of boosts you have
                 boosts = 5
+                //make score in top right 0, for new game
                 scoreEL.innerHTML = score
+                //start up game here
                 game.over = false
                 game.active = true
+                //if player has been loaded
                 if (player.image) {
+                    // put player in the center
                     player.position = {
                         x: (canvas.width - player.width) / 2,
                         y: canvas.height - player.height - 20
                     }
-
+                    // make sure player doesn't auto move
                     player.velocity = { x: 0, y: 0 }
+                    // unrotate player jic
                     player.rotation = 0
+                    //make player visible again
                     player.opacity = 1
                 }
                 // console.log('Player after restart:', {
@@ -697,15 +718,20 @@ addEventListener('keydown', ({key}) => {
                 // height: player.height,
                 // opacity: player.opacity
                 // })
+                
+                //delete all projectiles,
                 projectiles.length = 0
+                //enemies,
                 grids.length = 0
+                //and enemy projectiles
                 invaderProjectiles.length = 0
-
+                //reset frames
                 frames = 0
+                // put you back in the game instead of put you on start screen, could change this to STATES.START
                 currentGameState = STATES.PLAYING}
     }
 })
-
+//make sure key doesn't look like it has been pressed down for all of eternity
 addEventListener('keyup', ({key}) => {
     switch (key) {
         case 'Shift':
@@ -732,5 +758,5 @@ addEventListener('keyup', ({key}) => {
             break
     }
 })
-
+//finally, animate everything one last time
 animate();
